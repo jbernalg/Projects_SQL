@@ -41,3 +41,9 @@ SELECT * FROM producto;
 
 -- Lista el nombre de todos los productos que hay en la tabla producto
 SELECT nombre FROM producto;
+
+-- Lista los nombres y los precios de todos los productos  de la tabla producto
+SELECT nombre, precio FROM producto;
+
+-- Lista todas las columnas de la tabla producto
+SELECT * FROM producto;
