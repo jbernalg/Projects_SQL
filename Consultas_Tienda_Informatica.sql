@@ -111,3 +111,18 @@ WHERE producto.codigo_fabricante = fabricante.condigo;
 SELECT producto.nombre, producto.precio, fabricante.nombre
 FROM producto INNER JOIN fabricante
 ON producto.codigo_fabricante = fabricante.condigo;
+
+-- obtener el precio medio de los productos de cada fabricante, mostrando solo los codigos del fabricante
+SELECT AVG(precio), codigo_fabricante
+FROM producto
+GROUP BY codigo_fabricante;
+
+-- obtener el precio medio de los productos de cada fabricante, mostrando el nombre del fabricante
+SELECT AVG(precio), fabricante.nombre
+FROM producto, fabricante
+WHERE producto.codigo_fabricante = fabricante.condigo
+GROUP BY fabricante.nombre;
+
+
+
+
