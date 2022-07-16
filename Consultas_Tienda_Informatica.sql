@@ -195,4 +195,14 @@ WHERE codigo = 6;
 
 SELECT * FROM producto; 
 
+-- Lista el nombre de los productos, el precio en euros y el precio en dólares estadounidenses (USD). 
+SELECT nombre, precio/4 AS precio_euro, precio/5 AS precio_dolares
+FROM producto;
+
+-- Lista los nombres y los precios de todos los productos de la tabla producto, convirtiendo los nombres a mayúscula.
+SELECT UCASE(nombre), precio
+FROM producto; 
+
+
+
 
