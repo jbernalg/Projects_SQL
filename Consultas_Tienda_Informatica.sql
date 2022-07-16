@@ -154,4 +154,31 @@ WHERE P.codigo_fabricante = F.condigo
 AND P.precio = (SELECT MAX(P.precio)
 				FROM producto P
                 WHERE P.codigo_fabricante = F.condigo);
+                
+SELECT P.nombre, P.precio, F.nombre
+FROM producto P INNER JOIN fabricante F
+ON P.codigo_fabricante = F.condigo
+AND P.precio = (SELECT MAX(P.precio)
+				FROM producto P
+                WHERE P.codigo_fabricante = F.condigo);
+
+-- añadir un nuevo producto: Altaoves de 0 (fabricante 2)
+INSERT INTO producto(nombre, precio, codigo_fabricante)
+VALUES('Altavoces', 0, 2);
+
+-- corregir precio del producto: Altavoces 70
+UPDATE producto
+SET precio = 70
+WHERE codigo = 12;
+
+-- cambiar el nombre del producto 8 a impresora laser
+UPDATE producto
+SET nombre = 'Impresoa Laser'
+WHERE codigo = 8;
+
+
+
+
+
+
 
