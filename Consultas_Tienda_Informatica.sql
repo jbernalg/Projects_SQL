@@ -67,4 +67,12 @@ FROM producto;
 SELECT AVG(precio)
 FROM producto;
 
+-- obtener el precio medio de los articulos cuyo codigo de fabricante sea 2
+SELECT AVG(precio)
+FROM producto
+WHERE codigo_fabricante = 2;
 
+-- obtener el numero de productos cuyo precio sea mayor o igual a 180 
+SELECT COUNT(*)
+FROM producto
+WHERE precio >= 180; 
