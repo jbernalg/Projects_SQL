@@ -216,5 +216,11 @@ FROM fabricante;
 SELECT nombre, ROUND(precio, 2) AS precio_redondeado
 FROM producto;
 
+-- Lista los nombres y los precios de todos los productos de la tabla producto, 
+-- truncando el valor del precio para mostrarlo sin ninguna cifra decimal.
+SELECT nombre, FLOOR(precio) AS precio_truncado
+FROM producto;	
+
+
 
 
