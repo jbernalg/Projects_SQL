@@ -203,6 +203,18 @@ FROM producto;
 SELECT UCASE(nombre), precio
 FROM producto; 
 
+-- Lista los nombres y los precios de todos los productos de la tabla producto, convirtiendo los nombres a minúscula.
+SELECT LCASE(nombre), precio 
+FROM producto;
+
+-- Lista el nombre de todos los fabricantes en una columna, y en otra columna obtenga en mayúsculas 
+-- los dos primeros caracteres del nombre del fabricante.
+SELECT nombre, SUBSTRING(nombre,1,2) AS iniciales_fabricante
+FROM fabricante;
+
+-- Lista los nombres y los precios de todos los productos de la tabla producto, redondeando el valor del precio.
+SELECT nombre, ROUND(precio, 2) AS precio_redondeado
+FROM producto;
 
 
 
