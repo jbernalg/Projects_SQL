@@ -136,4 +136,22 @@ WHERE producto.codigo_fabricante = fabricante.condigo
 GROUP BY fabricante.nombre
 HAVING AVG(precio) >= 150;
 
+SELECT AVG(precio), fabricante.nombre
+FROM producto INNER JOIN fabricante
+ON producto.codigo_fabricante = fabricante.condigo
+GROUP BY fabricante.nombre
+HAVING AVG(precio) >= 150;
+
+-- obtener el nombre y precio del producto mas barato
+SELECT nombre, precio
+FROM producto
+WHERE precio = (SELECT MIN(precio) FROM producto); 
+
+-- obtener una lista con el nombre y el precio de los articulos mas caros de cada proveedor. Incluye el nombre del proveedor
+SELECT P.nombre, P.precio, F.nombre
+FROM producto P, fabricante F
+WHERE P.codigo_fabricante = F.condigo
+AND P.precio = (SELECT MAX(P.precio)
+				FROM producto P
+                WHERE P.codigo_fabricante = F.condigo);
 
