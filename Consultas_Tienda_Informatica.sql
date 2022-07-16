@@ -123,6 +123,17 @@ FROM producto, fabricante
 WHERE producto.codigo_fabricante = fabricante.condigo
 GROUP BY fabricante.nombre;
 
+SELECT AVG(precio), fabricante.nombre
+FROM producto INNER JOIN fabricante
+ON producto.codigo_fabricante = fabricante.condigo
+GROUP BY fabricante.nombre;
 
+-- obtener los nombres de los fabricantes que ofrezcan producto cuyo precio medio sea mayor o igual
+-- a 150. Indicar el precio medio
+SELECT AVG(precio), fabricante.nombre
+FROM producto, fabricante
+WHERE producto.codigo_fabricante = fabricante.condigo
+GROUP BY fabricante.nombre
+HAVING AVG(precio) >= 150;
 
 
