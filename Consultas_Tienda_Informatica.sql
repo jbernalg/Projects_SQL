@@ -75,4 +75,39 @@ WHERE codigo_fabricante = 2;
 -- obtener el numero de productos cuyo precio sea mayor o igual a 180 
 SELECT COUNT(*)
 FROM producto
-WHERE precio >= 180; 
+WHERE precio >= 180;
+
+-- obtener el nombre y precio de los productos cuyo precio sea mayor o igual a 180 y 
+-- ordenarlos descendentementes por precio
+SELECT nombre, precio
+FROM producto
+WHERE precio >= 180
+ORDER BY precio DESC; 
+
+-- ordenarlos ascendentemente por nombre
+SELECT nombre, precio
+FROM producto
+WHERE precio >= 180
+ORDER BY nombre;
+
+-- obtener un listado completo de productos, incluyendo por cada producto los datos del producto
+-- y su fabricante
+SELECT * FROM fabricante, producto;
+-- inner join implicito
+SELECT * 
+FROM producto, fabricante
+WHERE producto.codigo_fabricante = fabricante.condigo;
+
+-- inner join explicito
+SELECT *
+FROM producto INNER JOIN fabricante
+ON producto.codigo_fabricante = fabricante.condigo;
+
+--  obtener un listado de productos, incluyendo el nombre del articulo, su precio y el nombre del fabricante
+SELECT producto.nombre, producto.precio, fabricante.nombre
+FROM producto, fabricante
+WHERE producto.codigo_fabricante = fabricante.condigo;
+
+SELECT producto.nombre, producto.precio, fabricante.nombre
+FROM producto INNER JOIN fabricante
+ON producto.codigo_fabricante = fabricante.condigo;
