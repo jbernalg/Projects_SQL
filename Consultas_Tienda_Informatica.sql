@@ -176,9 +176,23 @@ UPDATE producto
 SET nombre = 'Impresoa Laser'
 WHERE codigo = 8;
 
+-- DESABILITAR EL MODO SEGURO DE MYSQL: 0 PARA DESABILITAR. 1 PARA HABILITAR
+SET SQL_SAFE_UPDATES = 0;
+-- -------------------------------------------------------------------------
 
+-- aplicar un 10% de decuento a todos los productos
+UPDATE producto
+SET precio = precio * 0.9;
 
+-- aplicar un descuento de 10 a todos los productos cuyo precio sea mayor o igual a 120
+UPDATE producto
+SET precio = precio - 10
+WHERE precio >= 120;
 
+-- borrar el producto de codigo 6
+DELETE FROM producto
+WHERE codigo = 6;
 
+SELECT * FROM producto; 
 
 
