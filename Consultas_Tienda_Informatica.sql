@@ -47,3 +47,16 @@ SELECT nombre, precio FROM producto;
 
 -- Lista todas las columnas de la tabla producto
 SELECT * FROM producto;
+
+-- obtener el nombres de los productos cuyo precio sea menor o igual a 200
+SELECT nombre FROM producto
+WHERE precio <= 120;
+
+-- obtener todos los datos de los productos cuyo precio este entre 60 y 120 
+SELECT * FROM producto
+WHERE precio >= 60 AND precio <= 120;
+
+SELECT * FROM producto
+WHERE precio BETWEEN 60 AND 120;
+
+
