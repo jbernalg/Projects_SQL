@@ -59,4 +59,12 @@ WHERE precio >= 60 AND precio <= 120;
 SELECT * FROM producto
 WHERE precio BETWEEN 60 AND 120;
 
+-- obtener el nombre y el precio multiplicado por 160. La columna debe presentarse como precio_total
+SELECT nombre, precio*160 AS precio_total
+FROM producto;
+
+-- Seleccionar el precio medio de todos los productos
+SELECT AVG(precio)
+FROM producto;
+
 
