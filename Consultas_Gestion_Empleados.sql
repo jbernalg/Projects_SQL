@@ -57,3 +57,13 @@ SELECT apellido1 FROM empleado;
 SELECT DISTINCT apellido1
 FROM empleado; 
 
+-- obtener todos los datos de los empleados que se apellidan Ruiz
+SELECT * 
+FROM empleado
+WHERE apellido1 = 'Ruiz';
+
+-- obtener todos los datos de los empleado que se apellidan Ruiz  y López
+SELECT *
+FROM empleado
+WHERE apellido1 = 'Ruiz' OR apellido2 = 'López';
+
