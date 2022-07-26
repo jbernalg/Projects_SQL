@@ -50,3 +50,10 @@ INSERT INTO empleado VALUES(11, '67389283A', 'Marta','Herrera', 'Gil', 1);
 INSERT INTO empleado VALUES(12, '41234836R', 'Irene','Salas', 'Flores', NULL);
 INSERT INTO empleado VALUES(13, '82635162B', 'Juan Antonio','Sáez', 'Guerrero', NULL);
 
+-- obtener el primer apellido de los empleados
+SELECT apellido1 FROM empleado;
+
+-- obtener el primer apellido de los empleado desechando los repetidos
+SELECT DISTINCT apellido1
+FROM empleado; 
+
