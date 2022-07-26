@@ -222,5 +222,3 @@ SELECT nombre, FLOOR(precio) AS precio_truncado
 FROM producto;	
 
 
-
-
