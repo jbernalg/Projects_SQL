@@ -69,10 +69,24 @@ WHERE apellido1 = 'Ruiz' OR apellido2 = 'López';
 
 SELECT *
 FROM empleado
-WHERE apellido1 IN ('Ruiz', 'López');
+WHERE apellido1 IN ('Ruiz', 'López') OR apellido2 IN ('Ruiz', 'López');
 
 -- obtener todos los datos de los empleado que trabajan en el departamento 1
 SELECT * 
 FROM empleado
 WHERE codigo_departamento = 1;
+
+-- obtener todos los datos de los empleado que trabajan para el departemento 1 y 4
+SELECT *
+FROM empleado
+WHERE codigo_departamento = 1 OR codigo_departamento = 4;
+
+SELECT *
+FROM empleado
+WHERE codigo_departamento IN (1, 4);
+
+-- obtener todos los datos de los empleados cuyo apellido comiencen por R
+SELECT *
+FROM empleado
+WHERE apellido1 LIKE 'R%' OR apellido2 LIKE 'R%';
 
