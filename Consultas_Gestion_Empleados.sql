@@ -109,5 +109,9 @@ SELECT *
 FROM empleado INNER JOIN departamento
 ON empleado.codigo_departamento = departamento.codigo;
 
-
+-- obtener un listado completo de empleados incluyendo el nombre y apellido del empleado junto al nombre y presupuesto
+-- de su departamento
+SELECT E.nombre, E.apellido1, E.apellido2, D.nombre, presupuesto
+FROM empleado E INNER JOIN departamento D
+ON E.codigo_departamento = D.codigo;
 
