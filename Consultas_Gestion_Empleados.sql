@@ -90,3 +90,20 @@ SELECT *
 FROM empleado
 WHERE apellido1 LIKE 'R%' OR apellido2 LIKE 'R%';
 
+-- obtener el presupuesto total de todos los departamentos
+SELECT * FROM departamento;
+
+SELECT SUM(presupuesto) AS presupuesto_total
+FROM departamento;
+
+-- obtener el numero de empleados de cada departamento
+SELECT * FROM empleado;
+
+SELECT codigo_departamento AS departamento, COUNT(*)
+FROM empleado
+GROUP BY codigo_departamento;
+
+
+
+
+
