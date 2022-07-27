@@ -99,11 +99,15 @@ FROM departamento;
 -- obtener el numero de empleados de cada departamento
 SELECT * FROM empleado;
 
-SELECT codigo_departamento AS departamento, COUNT(*)
-FROM empleado
+SELECT departamento.nombre, COUNT(*)
+FROM empleado, departamento
+WHERE empleado.codigo_departamento = departamento.codigo 
 GROUP BY codigo_departamento;
 
-
+-- obtener un listado completo de empleados incluyendo por cada empleado los datos del empleado y de su departamento
+SELECT *
+FROM empleado INNER JOIN departamento
+ON empleado.codigo_departamento = departamento.codigo;
 
 
 
