@@ -67,3 +67,12 @@ SELECT *
 FROM empleado
 WHERE apellido1 = 'Ruiz' OR apellido2 = 'López';
 
+SELECT *
+FROM empleado
+WHERE apellido1 IN ('Ruiz', 'López');
+
+-- obtener todos los datos de los empleado que trabajan en el departamento 1
+SELECT * 
+FROM empleado
+WHERE codigo_departamento = 1;
+
