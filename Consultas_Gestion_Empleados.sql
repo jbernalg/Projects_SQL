@@ -115,3 +115,13 @@ SELECT E.nombre, E.apellido1, E.apellido2, D.nombre, presupuesto
 FROM empleado E INNER JOIN departamento D
 ON E.codigo_departamento = D.codigo;
 
+-- obtener los nombres y apellidos de los empleados que trabajn en departamentos cuyo presupuesto sea mayor de 6000
+SELECT * FROM departamento;
+
+SELECT E.nombre, E.apellido1, E.apellido2 
+FROM empleado E INNER JOIN departamento D
+ON E.codigo_departamento = D.codigo
+AND D.presupuesto > 6000;
+
+
+
