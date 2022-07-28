@@ -134,3 +134,17 @@ SELECT *
 FROM departamento
 WHERE presupuesto > (SELECT AVG(presupuesto)
 					FROM departamento);
+                    
+-- obtener los nombres de los departamentos que tienen mas de dos empleados
+SELECT nombre
+FROM departamento
+WHERE codigo IN (SELECT codigo_departamento
+				 FROM empleado
+                 GROUP BY codigo_departamento
+                 HAVING COUNT(*) > 2);
+                 
+SELECT D.nombre
+FROM empleado E INNER JOIN departamento D
+ON E.codigo_departamento = D.codigo
+GROUP BY D.nombre
+HAVING COUNT(*) > 2;
