@@ -123,5 +123,14 @@ FROM empleado E INNER JOIN departamento D
 ON E.codigo_departamento = D.codigo
 AND D.presupuesto > 6000;
 
+SELECT nombre apellido1, apellido2
+FROM empleado
+WHERE codigo_departamento IN (SELECT codigo
+						FROM departamento
+                        WHERE presupuesto > 6000);
 
-
+-- obtener los datos de los departamentos cuyo presupuesto sea mayor al presupuesto medio de todos los departamentos
+SELECT *
+FROM departamento
+WHERE presupuesto > (SELECT AVG(presupuesto)
+					FROM departamento);
