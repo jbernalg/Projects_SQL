@@ -157,6 +157,23 @@ INSERT INTO departamento VALUES(11, 'Calidad', 40000, 20000);
 SELECT * FROM empleado;
 INSERT INTO empleado VALUES(14,'89267109','Esther', 'Vasquez', 'Diaz', 11);
 
+-- aplicar un recorte presupuestario de 10% a todos los departamentos
+-- DESABILITAR EL MODO SEGURO
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE departamento
+SET presupuesto = presupuesto*0.9;
+
+-- reasignar a los empleados del departamento de desarrollo al departamento de sistema
+SELECT * FROM empleado;
+
+UPDATE empleado
+SET codigo_departamento = 2
+WHERE codigo_departamento = 1;
+
+
+
+
 
 
 
