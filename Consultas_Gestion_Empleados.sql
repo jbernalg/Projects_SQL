@@ -148,3 +148,15 @@ FROM empleado E INNER JOIN departamento D
 ON E.codigo_departamento = D.codigo
 GROUP BY D.nombre
 HAVING COUNT(*) > 2;
+
+-- añadir un nuevo departamento 'Calidad' con presupuesto de 40000 y codigo 11
+-- añadir un empleado vinculado al departamento recien creado: Eshter Vasquez Diaz. DNI 89267109
+SELECT * FROM departamento;
+INSERT INTO departamento VALUES(11, 'Calidad', 40000, 20000);
+
+SELECT * FROM empleado;
+INSERT INTO empleado VALUES(14,'89267109','Esther', 'Vasquez', 'Diaz', 11);
+
+
+
+
