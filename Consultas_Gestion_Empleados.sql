@@ -172,13 +172,17 @@ SET codigo_departamento = 2
 WHERE codigo_departamento = 1;
 
 -- despedir a todos los empleado que trabajan en el area de sistemas (codigo_depatamento = 2)
-SELECT * FROM empleado;
+SELECT * FROM departamento;
 
 DELETE FROM empleado
 WHERE codigo_departamento = 2;
 
+-- despedir a todos los empleado que trabajen para departamentos cuyo presupuesto sea superior a 150000
+DELETE FROM empleado
+WHERE codigo_departamento IN (SELECT codigo
+					   FROM departamento
+                       WHERE presupuesto > 150000);
 
-
-
+-- 
 
 
