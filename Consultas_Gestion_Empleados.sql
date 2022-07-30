@@ -183,6 +183,7 @@ WHERE codigo_departamento IN (SELECT codigo
 					   FROM departamento
                        WHERE presupuesto > 150000);
 
--- 
+-- despedir a todos los empleados
+DELETE FROM empleado;
 
 
