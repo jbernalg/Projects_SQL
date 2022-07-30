@@ -186,4 +186,34 @@ WHERE codigo_departamento IN (SELECT codigo
 -- despedir a todos los empleados
 DELETE FROM empleado;
 
+-- ------------------------------------------------------------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------
+-- insertar valores en la tabla empleado
+INSERT INTO empleado VALUES(1, '32481596F', 'Aarón', 'Rivero', 'Gómez', 1);
+INSERT INTO empleado VALUES(2, 'Y5575632D', 'Adela', 'Salas', 'Díaz', 2);
+INSERT INTO empleado VALUES(3, 'R6970642B', 'Adolfo', 'Rubio', 'Flores', 3);
+INSERT INTO empleado VALUES(4, '77705545E', 'Adrián', 'Suárez', NULL, 4);
+INSERT INTO empleado VALUES(5, '17087203C', 'Marcos', 'Loyola', 'Méndez', 5);
+INSERT INTO empleado VALUES(6, '38382980M', 'María', 'Santana', 'Moreno', 1);
+INSERT INTO empleado VALUES(7, '80576669X', 'Pilar', 'Ruiz', NULL, 2);
+INSERT INTO empleado VALUES(8, '71651431Z', 'Pepe', 'Ruiz', 'Santana', 3);
+INSERT INTO empleado VALUES(9, '56399183D', 'Juan', 'Gómez', 'López', 2);
+INSERT INTO empleado VALUES(10, '46384486H', 'Diego','Flores', 'Salas', 5);
+INSERT INTO empleado VALUES(11, '67389283A', 'Marta','Herrera', 'Gil', 1);
+INSERT INTO empleado VALUES(12, '41234836R', 'Irene','Salas', 'Flores', NULL);
+INSERT INTO empleado VALUES(13, '82635162B', 'Juan Antonio','Sáez', 'Guerrero', NULL);
+
+SELECT * FROM empleado;
+
+-- Lista el primer apellido de los empleados eliminando los apellidos que estén repetidos.
+SELECT DISTINCT apellido1
+FROM empleado; 
+
+-- Lista todas las columnas de la tabla empleado.
+SELECT * FROM empleado;
+
+-- Lista el nombre y los apellidos de todos los empleados.
+SELECT nombre, apellido1, apellido2 
+FROM empleado;
+
 
