@@ -216,4 +216,20 @@ SELECT * FROM empleado;
 SELECT nombre, apellido1, apellido2 
 FROM empleado;
 
+-- Lista el código de los departamentos de los empleados que aparecen en la tabla empleado.
+SELECT codigo_departamento 
+FROM empleado;
 
+-- Lista el código de los departamentos de los empleados que aparecen en la tabla empleado, eliminando los códigos que aparecen repetidos.
+SELECT DISTINCT codigo_departamento
+FROM empleado;
+
+-- Lista el nombre y apellidos de los empleados en una única columna.
+SELECT nombre FROM empleado
+UNION ALL
+SELECT apellido1 FROM empleado
+UNION ALL
+SELECT apellido2 FROM empleado;
+
+SELECT CONCAT_WS(' ',nombre, apellido1, apellido2) AS 'Nombre Completo' 
+FROM empleado;
