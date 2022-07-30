@@ -171,6 +171,11 @@ UPDATE empleado
 SET codigo_departamento = 2
 WHERE codigo_departamento = 1;
 
+-- despedir a todos los empleado que trabajan en el area de sistemas (codigo_depatamento = 2)
+SELECT * FROM empleado;
+
+DELETE FROM empleado
+WHERE codigo_departamento = 2;
 
 
 
