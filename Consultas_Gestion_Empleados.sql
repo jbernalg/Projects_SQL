@@ -233,3 +233,11 @@ SELECT apellido2 FROM empleado;
 
 SELECT CONCAT_WS(' ',nombre, apellido1, apellido2) AS 'Nombre Completo' 
 FROM empleado;
+
+-- Lista el nombre y apellidos de los empleados en una única columna, convirtiendo todos los caracteres en mayúscula.
+SELECT UPPER(CONCAT_WS(' ',nombre, apellido1, apellido2)) AS 'Nombre Completo' 
+FROM empleado;
+
+-- Lista el nombre y apellidos de los empleados en una única columna, convirtiendo todos los caracteres en minúscula.
+SELECT LOWER(CONCAT_WS(' ',nombre, apellido1, apellido2)) AS 'Nombre Completo' 
+FROM empleado;
