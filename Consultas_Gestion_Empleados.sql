@@ -310,6 +310,27 @@ SELECT nombre, presupuesto
 FROM departamento
 WHERE presupuesto NOT BETWEEN 100000 AND 200000;
 
+-- Devuelve una lista con el nombre de los departamentos, gastos y presupuesto, 
+-- de quellos departamentos donde los gastos sean mayores que el presupuesto del que disponen.
+SELECT nombre, gastos, presupuesto
+FROM departamento
+WHERE gastos > presupuesto;
 
+-- Devuelve una lista con el nombre de los departamentos, gastos y presupuesto, de aquellos departamentos 
+-- donde los gastos sean menores que el presupuesto del que disponen.
+SELECT nombre, gastos, presupuesto
+FROM departamento
+WHERE gastos < presupuesto;
+
+-- Devuelve una lista con el nombre de los departamentos, gastos y presupuesto, de aquellos departamentos 
+-- donde los gastos sean iguales al presupuesto del que disponen.
+SELECT nombre, gastos, presupuesto
+FROM departamento
+WHERE gastos = presupuesto;
+
+-- Lista todos los datos de los empleados cuyo segundo apellido sea NULL.
+SELECT * 
+FROM empleado
+WHERE apellido2 IS NULL;
 
 
