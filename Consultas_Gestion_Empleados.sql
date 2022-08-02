@@ -277,3 +277,13 @@ SELECT apellido1, apellido2, nombre
 FROM empleado
 ORDER BY apellido1, apellido2, nombre; 
 
+-- Devuelve una lista con el nombre de los departamentos y el presupuesto, de aquellos que tienen un presupuesto mayor o igual a 150000 euros.
+SELECT nombre, presupuesto
+FROM departamento
+WHERE presupuesto >= 15000;
+
+-- Devuelve una lista con el nombre de los departamentos y el gasto, de aquellos que tienen menos de 5000 euros de gastos.
+SELECT nombre, gastos
+FROM departamento
+WHERE gastos < 5000;
+
