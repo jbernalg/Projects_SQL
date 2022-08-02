@@ -255,3 +255,13 @@ SELECT * FROM departamento;
 
 SELECT nombre, presupuesto - gastos AS 'Presupuesto Actual'
 FROM departamento;
+
+-- Lista el nombre de los departamentos y el valor del presupuesto actual ordenado de forma ascendente.
+SELECT nombre, presupuesto - gastos AS 'Presupuesto Actual'
+FROM departamento
+ORDER BY 'Presupuesto Actual';
+
+-- Lista el nombre de todos los departamentos ordenados de forma ascendente.
+SELECT nombre
+FROM departamento
+ORDER BY nombre;
