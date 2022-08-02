@@ -241,3 +241,17 @@ FROM empleado;
 -- Lista el nombre y apellidos de los empleados en una única columna, convirtiendo todos los caracteres en minúscula.
 SELECT LOWER(CONCAT_WS(' ',nombre, apellido1, apellido2)) AS 'Nombre Completo' 
 FROM empleado;
+
+-- Lista el código de los empleados junto al nif, pero el nif deberá aparecer en dos columnas, 
+-- una mostrará únicamente los dígitos del nif y la otra la letra.
+SELECT * FROM empleado;
+
+SELECT codigo, SUBSTRING(nif,9) AS Letra_nif, SUBSTRING(nif,1,8) AS Numero_nif
+FROM empleado;
+
+-- Lista el nombre de cada departamento y el valor del presupuesto actual del que dispone. 
+-- Para calcular este dato tendrá que restar al valor del presupuesto inicial (columna presupuesto) los gastos que se han generado (columna gastos).
+SELECT * FROM departamento;
+
+SELECT nombre, presupuesto - gastos AS 'Presupuesto Actual'
+FROM departamento;
