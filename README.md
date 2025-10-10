@@ -1,2 +1,3 @@
-# consultas_SQL
+# Projects to learn about SQL
+
 Consultas en diferentes Bases de Datos creadas en MySQL
