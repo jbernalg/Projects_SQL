@@ -14,8 +14,21 @@ INNER JOIN items_facturas IFa
     
 SELECT 
 	F.DNI,
-    F.FECHA_VENTA,
+    DATE_FORMAT(F.FECHA_VENTA, "%m - %Y") AS MES_ANO,
     IFa.CANTIDAD
 FROM facturas F
 INNER JOIN items_facturas IFa
 	ON F.NUMERO = IFa.NUMERO;
+    
+/* cantidad de ventas por mes para cada cliente*/
+SELECT 
+	F.DNI,
+    DATE_FORMAT(F.FECHA_VENTA, "%m - %Y") AS MES_ANO,
+    SUM(IFa.CANTIDAD) AS CANTIDAD_VENDIDA
+FROM facturas F
+INNER JOIN items_facturas IFa
+	ON F.NUMERO = IFa.NUMERO
+GROUP BY
+	F.DNI, DATE_FORMAT(F.FECHA_VENTA, "%m - %Y");
+    
+    
