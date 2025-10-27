@@ -31,4 +31,8 @@ INNER JOIN items_facturas IFa
 GROUP BY
 	F.DNI, DATE_FORMAT(F.FECHA_VENTA, "%m - %Y");
     
-    
+/* limite de ventas por cliente*/
+SELECT * 
+FROM tabla_de_clientes TC;   
+
+
