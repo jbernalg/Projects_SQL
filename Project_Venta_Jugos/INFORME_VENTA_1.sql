@@ -31,8 +31,26 @@ INNER JOIN items_facturas IFa
 GROUP BY
 	F.DNI, DATE_FORMAT(F.FECHA_VENTA, "%m - %Y");
     
-/* limite de ventas por cliente*/
+/* limite de ventas por cliente (VOLUMEN EN DECILITROS)*/
 SELECT * 
 FROM tabla_de_clientes TC;   
 
+SELECT 
+	DNI,
+    NOMBRE,
+    VOLUMEN_DE_COMPRA
+FROM tabla_de_clientes TC;
 
+SELECT 
+	F.DNI,
+    TC.NOMBRE,
+    DATE_FORMAT(F.FECHA_VENTA, "%m - %Y") AS MES_ANO,
+    SUM(IFa.CANTIDAD) AS CANTIDAD_VENDIDA,
+    MAX(VOLUMEN_DE_COMPRA)/10 AS CANTIDAD_MAXIMA
+FROM facturas F
+INNER JOIN items_facturas IFa
+	ON F.NUMERO = IFa.NUMERO
+ INNER JOIN tabla_de_clientes TC
+	ON TC.DNI = F.DNI
+GROUP BY
+	F.DNI, TC.NOMBRE, DATE_FORMAT(F.FECHA_VENTA, "%m - %Y");
