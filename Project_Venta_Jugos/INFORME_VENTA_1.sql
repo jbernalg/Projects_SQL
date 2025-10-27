@@ -41,6 +41,7 @@ SELECT
     VOLUMEN_DE_COMPRA
 FROM tabla_de_clientes TC;
 
+/*combinar consultas anteriores*/
 SELECT 
 	F.DNI,
     TC.NOMBRE,
@@ -54,3 +55,26 @@ INNER JOIN items_facturas IFa
 	ON TC.DNI = F.DNI
 GROUP BY
 	F.DNI, TC.NOMBRE, DATE_FORMAT(F.FECHA_VENTA, "%m - %Y");
+
+/*subconsulta*/    
+SELECT 
+	A.DNI,
+    A.NOMBRE,
+    A.MES_ANO,
+    A.CANTIDAD_VENDIDA - A.CANTIDAD_MAXIMA AS DIFERENCIA
+FROM (
+	SELECT 
+	F.DNI,
+    TC.NOMBRE,
+    DATE_FORMAT(F.FECHA_VENTA, "%m - %Y") AS MES_ANO,
+    SUM(IFa.CANTIDAD) AS CANTIDAD_VENDIDA,
+    MAX(VOLUMEN_DE_COMPRA)/10 AS CANTIDAD_MAXIMA
+	FROM facturas F
+	INNER JOIN items_facturas IFa
+		ON F.NUMERO = IFa.NUMERO
+	INNER JOIN tabla_de_clientes TC
+		ON TC.DNI = F.DNI
+	GROUP BY
+		F.DNI, TC.NOMBRE, DATE_FORMAT(F.FECHA_VENTA, "%m - %Y")
+) A;
+    
