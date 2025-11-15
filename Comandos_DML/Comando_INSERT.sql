@@ -28,3 +28,4 @@ INSERT INTO tb_producto VALUES
 	('1040109','Light','Asai','350 ml','Lata',5.60),
     ('1040110','Light','Manzana','350 ml','Lata',6.00),
     ('1040111','Light','Mango','350 ml','Lata',3.50);
+    
