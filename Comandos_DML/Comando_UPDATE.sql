@@ -14,4 +14,8 @@ UPDATE tb_producto SET
     ENVASE = 'Botella PET'
 WHERE CODIGO = '1000889';
 
-SELECT * FROM
+/*seleccionar todos los registros de la tabla cliente*/
+SELECT * FROM tb_cliente;
+
+/*actualizar los valores de un campo*/
+UPDATE tb_cliente SET VOLUMEN_COMPRA = VOLUMEN_COMPRA/10;
