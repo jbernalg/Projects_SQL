@@ -19,3 +19,4 @@ SELECT * FROM tb_cliente;
 
 /*actualizar los valores de un campo*/
 UPDATE tb_cliente SET VOLUMEN_COMPRA = VOLUMEN_COMPRA/10;
+ 
