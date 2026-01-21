@@ -17,7 +17,7 @@ VALUES
 '2015-06-14',
 0);
 
--- mostrar datos
+-- mostrar tabla con los datos
 SELECT * FROM tb_vendedor;
 
 -- iniciar transaccion
