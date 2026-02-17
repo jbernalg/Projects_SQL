@@ -22,5 +22,15 @@ CREATE TABLE empleados (
 
 CREATE TABLE categorias (
 	id_categoria INT PRIMARY KEY AUTO_INCREMENT,
-    nombre
-)
+    nombre VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE productos (
+	id_producto INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    precio DECIMAL(10,2) NOT NULL,
+    id_categoria INT,
+    disponible TINYINT NOT NULL DEFAULT 1
+);
+
+ALTER TABLE clientes MODIFY COLUMN activo TINYINT DEFAULT 1;
