@@ -28,3 +28,32 @@ INSERT INTO clientes (nombre, email, telefono) VALUES
 INSERT INTO empleados (nombre, cargo, salario, fecha_contratacion) VALUES
 ('Laura Martinez', 'Mesero', 1500000, '2023-01-10'),
 ('Pedro Lopez', 'Mesero', 1500000, '2023-02-15');
+
+select * from productos;
+
+-- verificar la insersion de duplicados
+INSERT INTO productos (nombre, precio, id_categoria) VALUES
+('Coca cola', 5000, 1);
+
+INSERT INTO categorias (nombre) VALUES ('Bebidas');
+
+-- identificar productos duplicados
+select
+	nombre,
+    COUNT(*)
+from productos
+group by nombre
+having count(*) > 1;
+
+-- eliminar registros duplicados y conservar el mas antiguo
+delete p1
+from productos p1
+join productos p2
+ON p1.nombre = p2.nombre
+AND p1.id_producto > p2.id_producto;
+
+-- agregar restriccion unioque a la tabla productos
+ALTER TABLE productos
+ADD CONSTRAINT unique_nombre_producto
+UNIQUE (nombre);
+
