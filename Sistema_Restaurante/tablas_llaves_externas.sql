@@ -28,3 +28,12 @@ CREATE TABLE detalle_pedido (
     FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
     FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );
+
+CREATE TABLE pagos (
+	id_pago INT PRIMARY KEY AUTO_INCREMENT,
+    id_pedido INT,
+    metodo_pago VARCHAR(30),
+    monto DECIMAL(10,2),
+    fecha_pago TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido)
+);
