@@ -1,0 +1,16 @@
+USE restaurante_db;
+
+-- insertar relacion en pedidos
+INSERT INTO pedidos (id_cliente, id_empleado, total)
+VALUES (1, 1, 55000);
+
+-- insertar datos en detalles_pedido
+INSERT INTO  detalle_pedido (id_pedido, id_producto, cantidad, precio_unitario)
+VALUES 
+	(1, 4, 1, 25000),
+    (1, 1, 2, 5000),
+    (1, 6, 1, 15000);
+    
+select * from pedidos;
+select * from detalle_pedido;
+
