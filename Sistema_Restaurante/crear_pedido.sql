@@ -34,3 +34,8 @@ select
 	SUM(total) as ventas_totales
 from pedidos
 where estado = 'pagado';
+
+-- mostrar promedio de precios
+select 
+	AVG(precio)
+from productos;
