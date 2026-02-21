@@ -14,3 +14,9 @@ VALUES
 select * from pedidos;
 select * from detalle_pedido;
 
+-- actualizar estado del pedido
+update pedidos 
+set estado = 'pagado'
+where id_pedido = 1;
+
+-- borrado logico de un cliente
