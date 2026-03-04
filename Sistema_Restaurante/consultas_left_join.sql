@@ -29,3 +29,16 @@ LEFT JOIN productos as pr
 	ON dp.id_producto = pr.id_producto;
 
 SELECT * FROM detalle_pedido;
+SELECT * FROM productos;
+
+-- Calcular el total del pedido
+SELECT
+	p.id_pedido,
+    c.nombre AS cliente,
+    SUM(dp.cantidad * dp.precio_unitario) AS total_pedido
+FROM pedidos p
+LEFT JOIN clientes c 
+	ON p.id_cliente = c.id_cliente
+LEFT JOIN detalle_pedido dp
+	ON p.id_pedido = dp.id_pedido
+GROUP BY p.id_pedido, c.nombre;
