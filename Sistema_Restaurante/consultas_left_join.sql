@@ -30,6 +30,7 @@ LEFT JOIN productos as pr
 
 SELECT * FROM detalle_pedido;
 SELECT * FROM productos;
+SELECT * FROM clientes;
 
 -- Calcular el total del pedido
 SELECT
