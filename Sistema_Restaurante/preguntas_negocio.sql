@@ -4,6 +4,7 @@ select * from productos;
 select * from detalle_pedido;
 select * from pedidos;
 select * from empleados;
+select * from categorias;
 
 -- Cual es el producto mas vendido?
 SELECT
@@ -43,3 +44,16 @@ SELECT
     COUNT(*) AS total_pedidos
 FROM pedidos
 GROUP BY estado;
+
+-- Que categoria genera mas ingresos?
+SELECT
+	c.nombre AS categoria,
+    SUM(dp.cantidad * dp.precio_unitario) AS ingresos
+FROM detalle_pedido dp
+LEFT JOIN productos pr 
+	ON dp.id_producto = pr.id_producto
+LEFT JOIN categorias c 
+	ON pr.id_categoria = c.id_categoria
+GROUP BY c.nombre
+ORDER BY ingresos DESC
+LIMIT 1;
