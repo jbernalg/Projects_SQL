@@ -25,3 +25,14 @@ LEFT JOIN empleados e
 	ON p.id_empleado = e.id_empleado
 GROUP BY e.nombre
 ORDER BY total_vendido DESC;
+
+-- Cual es el cliente que mas dinero ha gastado?
+SELECT
+	c.nombre AS cliente,
+    SUM(p.total) AS total_gastado
+FROM pedidos p 
+LEFT JOIN clientes c 
+	ON p.id_cliente = c.id_cliente
+GROUP BY c.nombre
+ORDER BY total_gastado DESC
+LIMIT 1;
