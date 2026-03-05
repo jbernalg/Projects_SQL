@@ -36,3 +36,10 @@ LEFT JOIN clientes c
 GROUP BY c.nombre
 ORDER BY total_gastado DESC
 LIMIT 1;
+
+-- Cuantos pedidos hay por estado?
+SELECT
+	estado,
+    COUNT(*) AS total_pedidos
+FROM pedidos
+GROUP BY estado;
