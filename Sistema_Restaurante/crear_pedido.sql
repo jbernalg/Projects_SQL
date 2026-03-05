@@ -111,3 +111,7 @@ SET total = (
     WHERE id_pedido = 10
     )
 WHERE id_pedido = 10;
+
+-- Eliminar registros en Pedidos
+DELETE FROM Pedidos WHERE id_pedido = 5;
+DELETE FROM Pedidos WHERE id_pedido = 4;
