@@ -31,6 +31,7 @@ LEFT JOIN productos as pr
 SELECT * FROM detalle_pedido;
 SELECT * FROM productos;
 SELECT * FROM clientes;
+SELECT * FROM pedidos;
 
 -- Calcular el total del pedido
 SELECT
@@ -43,3 +44,8 @@ LEFT JOIN clientes c
 LEFT JOIN detalle_pedido dp
 	ON p.id_pedido = dp.id_pedido
 GROUP BY p.id_pedido, c.nombre;
+
+-- cambiar status de los pedidos
+update pedidos
+SET estado = 'pagado'
+where id_pedido = 3;
