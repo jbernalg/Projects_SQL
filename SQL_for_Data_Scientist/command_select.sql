@@ -64,3 +64,15 @@ SELECT
 FROM customer
 ORDER BY customer_last_name, customer_first_name
 LIMIT 5;    
+
+-- mostrar todos los registros de la tabla vendor
+SELECT * FROM vendor;
+
+-- mostrar vendor_name, vendor_id, vendor type de todos los registros ordenados alfabeticamente
+-- por vendor_name
+SELECT
+	vendor_name,
+    vendor_id,
+    vendor_type
+FROM vendor
+ORDER BY vendor_name;
