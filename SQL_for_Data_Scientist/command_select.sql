@@ -46,3 +46,21 @@ SELECT
 FROM customer_purchases
 LIMIT 10;
 
+-- tabla customer
+SELECT * FROM customer LIMIT 5;
+
+-- concatenar el customer_first_name con customer_last_name en una nueva columna
+SELECT
+	customer_id,
+    CONCAT(customer_first_name, ' ', customer_last_name) AS customer_name
+FROM customer
+ORDER BY customer_last_name
+LIMIT 5;
+
+-- Mostrar el nombre completo de los customer en mayuscula
+SELECT
+	customer_id,
+    UPPER(CONCAT(customer_last_name, ', ', customer_first_name)) AS customer_name
+FROM customer
+ORDER BY customer_last_name, customer_first_name
+LIMIT 5;    
