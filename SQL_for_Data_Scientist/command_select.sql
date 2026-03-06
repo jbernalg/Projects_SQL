@@ -76,3 +76,19 @@ SELECT
     vendor_type
 FROM vendor
 ORDER BY vendor_name;
+
+-- Escribe una consulta que muestre todas las columnas y 10 filas de la tabla customer, 
+-- ordenadas por customer_last_name y luego por customer_first_name.
+SELECT * FROM customer
+ORDER BY customer_last_name, customer_first_name
+LIMIT 10;
+
+-- Escribe una consulta que liste todos los IDs de clientes y los nombres en la tabla de clientes, 
+-- ordenados por first_name.
+SELECT
+	customer_id,
+    customer_first_name
+FROM customer
+ORDER BY customer_first_name;
+
+
