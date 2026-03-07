@@ -72,5 +72,16 @@ FROM vendor_booth_assignments
 WHERE
 	vendor_id = 7 AND market_date BETWEEN '2019-04-02' AND '2019-04-16'
 ORDER BY market_date;
+
+-- obtener los clientes con apellido Diaz, Edwards o Wilson
+SELECT
+	customer_id,
+    customer_first_name,
+    customer_last_name
+FROM customer
+WHERE
+	customer_last_name IN ('Diaz', 'Edwards', 'Wilson')
+ORDER BY customer_last_name, customer_first_name; 
+
     
     
