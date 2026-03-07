@@ -65,6 +65,12 @@ WHERE
 	vendor_id = 9 AND market_date <= '2019-04-09'
 ORDER BY market_date;
     
-    
+-- Encontrar las asignaciones de puestos para el vendedor 7 para cualquier fecha
+-- de mercado que ocurriera entre el 2 y el 16 de abril de 2019
+SELECT *
+FROM vendor_booth_assignments
+WHERE
+	vendor_id = 7 AND market_date BETWEEN '2019-04-02' AND '2019-04-16'
+ORDER BY market_date;
     
     
