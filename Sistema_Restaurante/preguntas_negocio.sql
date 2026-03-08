@@ -94,5 +94,16 @@ GROUP BY mes
 ORDER BY ventas DESC
 LIMIT 1;
 
+-- Cual es el valor promedio de pedido por cliente?
+SELECT
+	c.nombre AS cliente,
+    ROUND(AVG(p.total),2) AS ticket_promedio_cliente
+FROM pedidos p 
+LEFT JOIN clientes c 
+	ON p.id_cliente = c.id_cliente
+GROUP BY c.nombre
+ORDER BY ticket_promedio_cliente DESC;
+
+
 
 
