@@ -104,6 +104,21 @@ LEFT JOIN clientes c
 GROUP BY c.nombre
 ORDER BY ticket_promedio_cliente DESC;
 
+-- Que productos se venden mas juntos?
+SELECT
+	pr1.nombre AS producto_1,
+    pr2.nombre AS producto_2,
+    COUNT(*) AS veces_juntos
+FROM detalle_pedido p1
+JOIN detalle_pedido p2
+ON p1.id_pedido = p2.id_pedido
+AND p1.id_producto < p2.id_producto
+JOIN productos pr1
+ON p1.id_producto = pr1.id_producto
+JOIN productos pr2
+ON p2.id_producto = pr2.id_producto 
+GROUP BY pr1.nombre, pr2.nombre
+ORDER BY veces_juntos DESC;
 
 
 
