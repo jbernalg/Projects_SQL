@@ -85,7 +85,14 @@ SELECT
 FROM pedidos
 WHERE activo = 1;
 
-
+-- Que mes tuvo mas ventas?
+SELECT
+	MONTH(fecha_pedido) AS mes,
+    SUM(total) AS ventas
+FROM pedidos
+GROUP BY mes
+ORDER BY ventas DESC
+LIMIT 1;
 
 
 
