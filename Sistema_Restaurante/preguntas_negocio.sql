@@ -133,6 +133,12 @@ LEFT JOIN categorias c
 GROUP BY c.nombre
 ORDER BY ingresos DESC;
 
-
+-- Cual es la hora pico de ventas?
+SELECT
+	HOUR(fecha_pedido) AS hora,
+    SUM(total) AS ventas
+FROM pedidos
+GROUP BY hora
+ORDER BY ventas DESC;
 
 
