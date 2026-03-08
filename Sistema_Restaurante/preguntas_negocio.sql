@@ -57,3 +57,10 @@ LEFT JOIN categorias c
 GROUP BY c.nombre
 ORDER BY ingresos DESC
 LIMIT 1;
+
+-- Ticket promedio por pedido
+SELECT
+	ROUND(AVG(total),2) AS ticket_promedio
+FROM pedidos;
+
+
