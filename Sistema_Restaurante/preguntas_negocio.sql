@@ -63,4 +63,14 @@ SELECT
 	ROUND(AVG(total),2) AS ticket_promedio
 FROM pedidos;
 
+-- Cuales productos nunca se han vendido?
+SELECT
+	pr.nombre
+FROM productos pr
+LEFT JOIN detalle_pedido dp
+	ON pr.id_producto = dp.id_producto
+WHERE dp.id_producto IS NULL;
+
+
+
 
