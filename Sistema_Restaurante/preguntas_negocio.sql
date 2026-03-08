@@ -141,4 +141,12 @@ FROM pedidos
 GROUP BY hora
 ORDER BY ventas DESC;
 
-
+-- Que empleados venden mas por pedido en promedio?
+SELECT
+	e.nombre AS empleado,
+    ROUND(AVG(p.total),2) AS venta_promedio
+FROM pedidos p 
+LEFT JOIN empleados e 
+	ON p.id_empleado = e.id_empleado
+GROUP BY e.nombre
+ORDER BY venta_promedio DESC;
