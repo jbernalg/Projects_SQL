@@ -120,5 +120,19 @@ ON p2.id_producto = pr2.id_producto
 GROUP BY pr1.nombre, pr2.nombre
 ORDER BY veces_juntos DESC;
 
+-- Cual es el orcentaje de ventas por categoria?
+SELECT
+	c.nombre AS categoria,
+    ROUND(SUM(dp.cantidad * dp.precio_unitario),2) AS ingresos,
+    ROUND(SUM(dp.cantidad * dp.precio_unitario)/(SELECT SUM(total) FROM pedidos),2) * 100 AS pct
+FROM detalle_pedido dp
+LEFT JOIN productos pr 
+	ON pr.id_producto = dp.id_producto
+LEFT JOIN categorias c 
+	ON pr.id_categoria = c.id_categoria
+GROUP BY c.nombre
+ORDER BY ingresos DESC;
+
+
 
 
