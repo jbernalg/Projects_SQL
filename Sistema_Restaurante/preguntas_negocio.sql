@@ -71,6 +71,15 @@ LEFT JOIN detalle_pedido dp
 	ON pr.id_producto = dp.id_producto
 WHERE dp.id_producto IS NULL;
 
+-- Cuanto se vendio por dia?
+SELECT
+	DATE(fecha_pedido) AS fecha,
+    SUM(total) AS ventas_del_dia
+FROM pedidos
+GROUP BY fecha
+ORDER BY fecha;
+
+
 
 
 
