@@ -79,6 +79,12 @@ FROM pedidos
 GROUP BY fecha
 ORDER BY fecha;
 
+-- Cuantos clientes activo hay?
+SELECT
+	COUNT(DISTINCT id_cliente) AS clientes_activos
+FROM pedidos
+WHERE activo = 1;
+
 
 
 
