@@ -96,7 +96,14 @@ FROM customer
 WHERE
 	customer_last_name IN ('Renee', 'Rene', 'Renée', 'René', 'Renne');
     
---
+-- ------------------ LIKE -----------------------------------------
+-- obtener clientes cuyo nombre comience por Jer
+SELECT
+	customer_id,
+    customer_first_name,
+    customer_last_name
+FROM customer
+WHERE customer_first_name LIKE 'Jer%'; 
 
     
     
