@@ -103,7 +103,57 @@ SELECT
     customer_first_name,
     customer_last_name
 FROM customer
-WHERE customer_first_name LIKE 'Jer%'; 
+WHERE customer_first_name LIKE 'Jer%' ;
 
+-- ------------------- IS NULL -------------------------------------
+-- obtener los productos que no tengan tamanos
+SELECT *
+FROM product
+WHERE product_size IS NULL;
+
+-- ----------------- TRIM -----------------------------------------
+-- obtener los productos ue no tengan tamanos (con strim)
+SELECT *
+FROM product
+WHERE product_size IS NULL OR TRIM(product_size) = ' ';
+
+SELECT
+	market_date,
+    transaction_time,
+    customer_id,
+    vendor_id,
+    quantity
+FROM customer_purchases
+WHERE 
+	customer_id = 1 AND vendor_id = 7 AND quantity > 1;
     
+SELECT
+	market_date,
+    transaction_time,
+    customer_id,
+    vendor_id,
+    quantity
+FROM customer_purchases
+WHERE 
+	customer_id = 1 AND vendor_id = 7 AND quantity <= 1;
+
+SELECT
+	market_date,
+    transaction_time,
+    customer_id,
+    vendor_id,
+    quantity
+FROM customer_purchases
+WHERE 
+	customer_id = 1 AND vendor_id = 7;
+    
+SELECT
+	market_date,
+    transaction_time,
+    customer_id,
+    vendor_id,
+    quantity
+FROM customer_purchases
+WHERE 
+	quantity IS NOT NULL;
     
