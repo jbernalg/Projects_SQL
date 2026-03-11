@@ -117,6 +117,7 @@ SELECT *
 FROM product
 WHERE product_size IS NULL OR TRIM(product_size) = ' ';
 
+-- -------------- Advertencia sobre las comparaciones con Null
 SELECT
 	market_date,
     transaction_time,
@@ -156,4 +157,32 @@ SELECT
 FROM customer_purchases
 WHERE 
 	quantity IS NOT NULL;
+    
+-- --------------------- Subqueries ------------------------------
+-- lista de fechas del mercado en los dia en que llovio
+SELECT
+	market_date,
+    market_rain_flag
+FROM market_date_info
+WHERE market_rain_flag = 1;
+
+-- obtener las compras que se realizaron en el mercado los dias en que llovio
+SELECT
+	market_date,
+    customer_id,
+    vendor_id,
+    quantity * cost_to_customer_per_qty price
+FROM customer_purchases
+WHERE
+	market_date IN (
+		SELECT
+			market_date
+		FROM market_date_info
+		WHERE market_rain_flag = 1
+    )
+LIMIT 5;
+
+
+    
+    
     
