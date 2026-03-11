@@ -189,6 +189,17 @@ FROM customer_purchases
 WHERE product_id = 4 OR product_id = 9;
 
 
+-- Escriba dos consultas, una usando dos condiciones con un operador AND, y otra usando el operador 
+-- BETWEEN, que devuelvan todas las compras de clientes realizadas a proveedores con IDs de 
+-- proveedor entre 8 y 10 (inclusive).
+SELECT *
+FROM customer_purchases
+WHERE
+	vendor_id > 7 AND vendor_id <= 10;
     
+SELECT *
+FROM customer_purchases
+WHERE
+	vendor_id BETWEEN 8 AND  10;
     
     
