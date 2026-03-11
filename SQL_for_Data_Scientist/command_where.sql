@@ -182,6 +182,12 @@ WHERE
     )
 LIMIT 5;
 
+-- -------------- Exercices --------------------------------------
+-- Escribe una consulta que devuelva todas las compras de clientes de los IDs de producto 4 y 9.
+SELECT *
+FROM customer_purchases
+WHERE product_id = 4 OR product_id = 9;
+
 
     
     
