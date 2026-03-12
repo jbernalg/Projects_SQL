@@ -30,3 +30,20 @@ SELECT
 	END AS weekend_flag
 FROM market_date_info
 LIMIT 5;
+
+-- ----------- Clasificacion de valores continuos -----------------------
+-- crear columna binaria que clasifique a los clientes cuya compra sea mayor a $50
+SELECT
+	market_date,
+    customer_id,
+    vendor_id,
+    ROUND(quantity * cost_to_customer_per_qty, 2) AS price,
+    CASE
+		WHEN quantity * cost_to_customer_per_qty > 50
+			THEN 1
+		ELSE 0
+	END AS price_over_50
+FROM customer_purchases
+LIMIT 20;
+
+
