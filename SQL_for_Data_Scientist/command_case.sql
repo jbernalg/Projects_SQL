@@ -65,3 +65,21 @@ SELECT
 FROM customer_purchases
 LIMIT 20;
 
+-- clasificacion numerica del precio con el extremo inferior del rango
+SELECT
+	market_date,
+    customer_id,
+    vendor_id,
+    ROUND(quantity * cost_to_customer_per_qty, 2) AS price,
+    CASE
+		WHEN quantity * cost_to_customer_per_qty < 5.00
+			THEN 0
+		WHEN quantity * cost_to_customer_per_qty < 10.00
+			THEN 5
+		WHEN quantity * cost_to_customer_per_qty < 20.00
+			THEN 10
+		WHEN quantity * cost_to_customer_per_qty >= 20.00
+			THEN 20
+	END AS price_bin
+FROM customer_purchases
+LIMIT 20;
