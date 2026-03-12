@@ -46,4 +46,22 @@ SELECT
 FROM customer_purchases
 LIMIT 20;
 
+-- Clasificar el precio en varias categorias
+SELECT
+	market_date,
+    customer_id,
+    vendor_id,
+    ROUND(quantity * cost_to_customer_per_qty, 2) AS price,
+    CASE
+		WHEN quantity * cost_to_customer_per_qty < 5.00
+			THEN 'Under $5'
+		WHEN quantity * cost_to_customer_per_qty < 10.00
+			THEN '$5 - $9.99'
+		WHEN quantity * cost_to_customer_per_qty < 20.00
+			THEN '$10 - $19.99'
+		WHEN quantity * cost_to_customer_per_qty >= 20.00
+			THEN '$20 and up'
+	END AS price_bin
+FROM customer_purchases
+LIMIT 20;
 
