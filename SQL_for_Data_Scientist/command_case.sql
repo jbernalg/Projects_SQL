@@ -1,1 +1,32 @@
 USE farmers_market;
+
+-- Clasificar vendedores segun venta de productos frescos
+SELECT
+	vendor_id,
+    vendor_name,
+    vendor_type,
+    CASE
+		WHEN LOWER(vendor_type) LIKE '%fresh%'
+			THEN 'Fresh Produce'
+		ELSE 'Other'
+	END AS vendor_type_condensed
+FROM vendor;
+
+-- ----------------- Banderas binarias ---------------------------
+-- mostrar dias en los que abren el mercado
+SELECT
+	market_date,
+    market_day
+FROM market_date_info
+LIMIT 5;
+
+-- crear columna que clasifique los dias de apertura del mercado
+SELECT
+	market_date,
+    CASE
+		WHEN market_day = 'Saturday' OR market_day = 'Sunday'
+			THEN 1
+		ELSE 0
+	END AS weekend_flag
+FROM market_date_info
+LIMIT 5;
