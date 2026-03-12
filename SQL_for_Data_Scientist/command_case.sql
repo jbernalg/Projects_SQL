@@ -80,6 +80,6 @@ SELECT
 			THEN 10
 		WHEN quantity * cost_to_customer_per_qty >= 20.00
 			THEN 20
-	END AS price_bin
+	END AS price_bin_lower_end
 FROM customer_purchases
 LIMIT 20;
