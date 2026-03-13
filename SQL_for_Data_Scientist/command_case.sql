@@ -145,3 +145,17 @@ SELECT
 	END AS boot_price_level_C
 FROM booth
 LIMIT 5;
+
+-- Los productos se pueden vender por unidad individual o por medidas a granel 
+-- como libras o onzas. Escribe una consulta que muestre las columnas product_id y 
+-- product_name de la tabla de productos, y agrega una columna llamada 
+-- prod_qty_type_condensed que muestre la palabra “unit” si product_qty_type es “unit,” y 
+-- de lo contrario muestre la palabra “bulk.”
+SELECT
+	product_id,
+    product_name,
+    CASE
+		WHEN product_qty_type = 'unit' THEN 'unit'
+        ELSE 'bulk'
+	END AS prod_qty_type_condensed
+FROM product;
