@@ -159,3 +159,19 @@ SELECT
         ELSE 'bulk'
 	END AS prod_qty_type_condensed
 FROM product;
+
+-- Queremos marcar todos los diferentes tipos de productos de pimienta que se venden 
+-- en el mercado. Agrega una columna a la consulta anterior llamada pepper_flag que indique 1 
+-- si el nombre del producto contiene la palabra “pepper” (sin importar mayúsculas o minúsculas), 
+-- y de lo contrario indique 0.
+SELECT
+	product_id,
+    product_name,
+    CASE WHEN product_qty_type = 'unit' THEN 'unit'
+		 ELSE 'bulk'
+	END AS prod_qty_type_condensed,
+    CASE 
+		WHEN LOWER(product_name) LIKE '%pepper%' THEN 1
+        ELSE 0
+	END AS pepper_flag
+FROM product;
