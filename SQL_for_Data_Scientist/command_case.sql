@@ -118,3 +118,15 @@ SELECT
 		ELSE 0
 	END AS vendor_type_prepared
 FROM vendor;
+
+-- -------------------- Exercises ----------------------
+
+-- identificar y etiquetar a los clientes que habitan en la localidad del mercado
+SELECT
+	customer_id,
+    CASE
+		WHEN customer_zip = '22801' THEN 'Local'
+        ELSE 'Not Local'
+	END AS customer_location_type
+FROM customer
+LIMIT 10;
