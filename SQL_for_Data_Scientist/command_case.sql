@@ -130,3 +130,18 @@ SELECT
 	END AS customer_location_type
 FROM customer
 LIMIT 10;
+
+-- codificar en one hot los niveles de precio de los puestos
+SELECT
+	booth_number,
+    CASE WHEN booth_price_level = 'A' THEN 1
+		 ELSE 0
+	END AS boot_price_level_A,
+    CASE WHEN booth_price_level = 'B' THEN 1
+		 ELSE 0
+	END AS boot_price_level_B,
+    CASE WHEN booth_price_level = 'C' THEN 1
+		 ELSE 0
+	END AS boot_price_level_C
+FROM booth
+LIMIT 5;
