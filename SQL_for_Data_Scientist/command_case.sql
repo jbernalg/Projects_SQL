@@ -83,3 +83,24 @@ SELECT
 	END AS price_bin_lower_end
 FROM customer_purchases
 LIMIT 20;
+
+-- -------------------- Codificacion categorica ---------------------------
+-- convertir los niveles de precio de los puestos en valores numericos
+SELECT
+	booth_number,
+    booth_price_level,
+    CASE
+		WHEN booth_price_level = 'A' THEN 1
+        WHEN booth_price_level = 'B' THEN 2
+        WHEN booth_price_level = 'C' THEN 3
+	END as boot_price_leve_numeric
+FROM booth;
+
+-- ------------------- Variables ficticias con One Hot ----------------------------
+-- codificar en one hot las categorias de tipo de proveedor
+SELECT
+	vendor_id,
+    vendor_name,
+    vendor_type,
+    CASE WHEN vendor_type = 'Arts & Jewelry'
+FROM vendor;
