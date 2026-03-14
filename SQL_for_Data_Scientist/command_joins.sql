@@ -44,6 +44,12 @@ FROM product pr
 RIGHT JOIN product_category cat
 	ON pr.product_category_id = cat.product_category_id;
     
+-- listar todas las compras y los clientes asociados con ella
+SELECT *
+FROM customer AS  c
+RIGHT JOIN customer_purchases AS cp
+	ON c.customer_id = cp.customer_id;
+    
 
 -- ------------------ INNER JOIN -----------------------
 -- obtener todos los productos que esten dentro de una categoria
