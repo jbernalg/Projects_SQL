@@ -62,3 +62,24 @@ SELECT
 FROM product pr
 INNER JOIN product_category cat
 	ON pr.product_category_id = cat.product_category_id;
+    
+-- ------------ Error comun al filtrar datos combinados ----------------
+-- obtener los cliente junto a su respectiva fecha de compra
+-- esta consulta pierda informacion acerca de los clientes que nunca han comprado
+SELECT
+	c.*,
+    cp.market_date
+FROM customer As c
+LEFT JOIN customer_purchases AS cp
+	ON c.customer_id = cp.customer_id
+WHERE cp.market_date <> '2019-03-02';
+
+-- contienea todos los clientes incluso a aquellos que no han comprado
+-- esta consulta tiene un registro por cada articulo comprado
+SELECT 
+	c.*,
+    cp.market_date
+FROM customer AS c
+LEFT JOIN customer_purchases AS cp
+	ON c.customer_id = cp.customer_id
+WHERE (cp.market_date <> '2019-03-02' OR cp.market_date IS NULL); 
