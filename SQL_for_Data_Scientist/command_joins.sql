@@ -74,7 +74,7 @@ LEFT JOIN customer_purchases AS cp
 	ON c.customer_id = cp.customer_id
 WHERE cp.market_date <> '2019-03-02';
 
--- contienea todos los clientes incluso a aquellos que no han comprado
+-- contiene a todos los clientes incluso a aquellos que no han comprado
 -- esta consulta tiene un registro por cada articulo comprado
 SELECT 
 	c.*,
@@ -83,3 +83,13 @@ FROM customer AS c
 LEFT JOIN customer_purchases AS cp
 	ON c.customer_id = cp.customer_id
 WHERE (cp.market_date <> '2019-03-02' OR cp.market_date IS NULL); 
+
+-- lista de clientes tanto los que han comprado como los que no
+SELECT DISTINCT c.*
+FROM customer AS c
+LEFT JOIN customer_purchases AS cp
+	ON c.customer_id = cp.customer_id
+WHERE (cp.market_date <> '2019-03-02' OR cp.market_date IS NULL); 
+
+
+
