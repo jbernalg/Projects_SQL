@@ -121,4 +121,16 @@ INNER JOIN vendor AS v
 	ON vba.vendor_id = v.vendor_id
 ORDER BY vendor_name, market_date;
 
+-- ¿Es posible escribir una consulta que produzca una salida idéntica a la salida de 
+-- la siguiente consulta, pero usando un LEFT JOIN en lugar de un RIGHT JOIN?
+SELECT *
+FROM customer AS c
+RIGHT JOIN customer_purchases AS cp
+	ON c.customer_id = cp.customer_id;
+    
+SELECT *
+FROM customer_purchases AS cp
+LEFT JOIN customer AS c
+	ON cp.customer_id = c.customer_id;
+
 
