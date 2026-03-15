@@ -108,4 +108,17 @@ LEFT JOIN vendor AS v
 	ON v.vendor_id = vba.vendor_id
 ORDER BY b.booth_number, vba.market_date;
 
+-- -------------------- Exercices -----------------------------------
+
+-- Escribe una consulta que haga un INNER JOIN de la tabla vendor con la tabla 
+-- vendor_booth_assignments en el campo vendor_id que ambas tienen en común, 
+-- y ordena el resultado por vendor_name, luego por market_date.
+SELECT
+	v.*,
+    vba.*
+FROM vendor_booth_assignments AS vba
+INNER JOIN vendor AS v
+	ON vba.vendor_id = v.vendor_id
+ORDER BY vendor_name, market_date;
+
 
