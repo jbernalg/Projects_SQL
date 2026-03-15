@@ -91,5 +91,21 @@ LEFT JOIN customer_purchases AS cp
 	ON c.customer_id = cp.customer_id
 WHERE (cp.market_date <> '2019-03-02' OR cp.market_date IS NULL); 
 
+-- ------------- JOINs con multiples tablas ------------------------------
+-- obtener informacion acerca de los puestos y su asignacion a cada vendedor para cada fecha
+-- ademas, agregar tanto los asignados como no asignados a proveedores
+SELECT
+	b.booth_number,
+    b.booth_type,
+    vba.market_date,
+    v.vendor_id,
+    v.vendor_name,
+    v.vendor_type
+FROM booth AS b
+LEFT JOIN vendor_booth_assignments AS vba
+	ON b.booth_number = vba.booth_number
+LEFT JOIN vendor AS v
+	ON v.vendor_id = vba.vendor_id
+ORDER BY b.booth_number, vba.market_date;
 
 
