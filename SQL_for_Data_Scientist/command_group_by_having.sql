@@ -68,3 +68,12 @@ FROM customer_purchases
 WHERE customer_id = 3
 ORDER BY market_date, vendor_id;
 
+-- Cuanto dinero gasto el cliente en total en cada fecha?
+SELECT
+    customer_id,
+    market_date,
+    SUM(quantity * cost_to_customer_per_qty) AS total_spent
+FROM customer_purchases
+WHERE customer_id = 3
+GROUP BY market_date
+ORDER BY market_date;
