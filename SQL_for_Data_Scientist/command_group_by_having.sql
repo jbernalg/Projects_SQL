@@ -15,6 +15,7 @@ FROM customer_purchases
 GROUP BY market_date, customer_id
 ORDER BY market_date, customer_id;
 
+-- ---------------------- Funciones agregadoras -------------------------------
 -- obtener la cantidad de veces que los clientes comprar por cada fecha
 SELECT
 	market_date,
@@ -55,3 +56,15 @@ FROM customer_purchases
 GROUP BY market_date, customer_id
 ORDER BY market_date, customer_id
 LIMIT 10;
+
+-- --------------- Calculos dentro de funciones agregadoras ---------------------
+-- Obtener la lista de compra del cliente 3 junto al precio de cada compra.
+SELECT
+	market_date,
+    customer_id,
+    vendor_id,
+    quantity * cost_to_customer_per_qty AS price
+FROM customer_purchases
+WHERE customer_id = 3
+ORDER BY market_date, vendor_id;
+
