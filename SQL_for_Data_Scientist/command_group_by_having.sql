@@ -24,3 +24,13 @@ FROM customer_purchases
 GROUP BY market_date, customer_id
 ORDER BY market_date, customer_id
 LIMIT 10;
+
+-- sumar todas las cantidades compradas por los clientes para cada fecha
+SELECT
+	market_date,
+    customer_id,
+    SUM(quantity) AS items_purchased
+FROM customer_purchases
+GROUP BY market_date, customer_id
+ORDER BY market_date, customer_id
+LIMIT 10;
