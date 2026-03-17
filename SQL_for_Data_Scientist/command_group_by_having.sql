@@ -14,3 +14,13 @@ SELECT
 FROM customer_purchases
 GROUP BY market_date, customer_id
 ORDER BY market_date, customer_id;
+
+-- obtener la cantidad de veces que los clientes comprar por cada fecha
+SELECT
+	market_date,
+    customer_id,
+    COUNT(*) AS items_purchases
+FROM customer_purchases
+GROUP BY market_date, customer_id
+ORDER BY market_date, customer_id
+LIMIT 10;
