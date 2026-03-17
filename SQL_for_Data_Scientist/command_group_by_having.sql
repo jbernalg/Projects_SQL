@@ -34,3 +34,13 @@ FROM customer_purchases
 GROUP BY market_date, customer_id
 ORDER BY market_date, customer_id
 LIMIT 10;
+
+-- Cuantos tipos diferentes de articulos fueron comprados por cada cliente
+SELECT
+	market_date,
+    customer_id,
+    COUNT(DISTINCT product_id) AS different_products_purchased
+FROM customer_purchases cp
+GROUP BY market_date, customer_id
+ORDER BY market_date, customer_id
+LIMIT 10;
