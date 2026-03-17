@@ -44,3 +44,14 @@ FROM customer_purchases cp
 GROUP BY market_date, customer_id
 ORDER BY market_date, customer_id
 LIMIT 10;
+
+-- mostrar las ultimas dos consultas en una sola
+SELECT
+	market_date,
+    customer_id,
+    SUM(quantity) AS items_purchased,
+    COUNT(DISTINCT product_id) AS different_products_purchased
+FROM customer_purchases
+GROUP BY market_date, customer_id
+ORDER BY market_date, customer_id
+LIMIT 10;
