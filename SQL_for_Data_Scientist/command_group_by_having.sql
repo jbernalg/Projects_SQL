@@ -96,3 +96,21 @@ SELECT
 FROM customer_purchases
 GROUP BY customer_id
 ORDER BY customer_id;
+
+-- traer algunos detalles del cliente 3 y de los proveedores que lo atienden
+SELECT
+	c.customer_first_name,
+    c.customer_last_name,
+    cp.customer_id,
+    v.vendor_name,
+    cp.vendor_id,
+    cp.quantity * cp.cost_to_customer_per_qty AS price
+FROM customer c
+LEFT JOIN customer_purchases cp
+	ON c.customer_id = cp.customer_id
+LEFT JOIN vendor v
+	ON cp.vendor_id = v.vendor_id
+WHERE cp.customer_id = 3
+ORDER BY cp.customer_id, cp.vendor_id;
+
+-- agrupar a nivel de una fila por proveedor
