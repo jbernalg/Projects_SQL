@@ -114,3 +114,23 @@ WHERE cp.customer_id = 3
 ORDER BY cp.customer_id, cp.vendor_id;
 
 -- agrupar a nivel de una fila por proveedor
+SELECT
+	c.customer_first_name,
+    c.customer_last_name,
+    cp.customer_id,
+    v.vendor_name,
+    cp.vendor_id,
+    ROUND(SUM(cp.quantity * cp.cost_to_customer_per_qty), 2) AS price
+FROM customer c
+LEFT JOIN customer_purchases cp
+	ON c.customer_id = cp.customer_id
+LEFT JOIN vendor v
+	ON cp.vendor_id = v.vendor_id
+WHERE cp.customer_id = 3
+GROUP BY
+	c.customer_first_name,
+    c.customer_last_name,
+    cp.customer_id,
+    v.vendor_name,
+    cp.vendor_id
+ORDER BY cp.customer_id, cp.vendor_id;
