@@ -163,3 +163,24 @@ SELECT *
 FROM vendor_inventory
 ORDER BY original_price
 LIMIT 10;
+
+-- obtener el precio del articulo mas barato y mas caro en toda la tabla
+SELECT
+	MIN(original_price) AS minimum_price,
+    MAX(original_price) AS maximum_price
+FROM  vendor_inventory
+ORDER BY original_price;
+
+-- obtener los precios mas bajos y mas altos dentro de cada cateogria de 
+-- producto
+SELECT
+	pc.product_category_name,
+    p.product_category_id,
+    MIN(vi.original_price) AS minimum_price,
+    MAX(vi.original_price) AS maximum_price
+FROM vendor_inventory AS vi
+INNER JOIN product AS p
+	ON vi.product_id = p.product_id
+INNER JOIN product_category AS pc
+	ON p.product_category_id = pc.product_category_id
+GROUP BY pc.product_category_name, p.product_category_id;
