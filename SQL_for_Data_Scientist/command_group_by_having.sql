@@ -156,3 +156,10 @@ GROUP BY
     v.vendor_name,
     cp.vendor_id
 ORDER BY cp.customer_id, cp.vendor_id;
+
+-- --------------------- MIN y MAX ------------------------------------------
+-- mostrar todos los campos disponibles de vendor_inventory
+SELECT *
+FROM vendor_inventory
+ORDER BY original_price
+LIMIT 10;
