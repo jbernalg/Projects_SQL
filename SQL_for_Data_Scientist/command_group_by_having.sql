@@ -88,3 +88,11 @@ WHERE
 	customer_id = 3
 GROUP BY customer_id, vendor_id
 ORDER BY customer_id, vendor_id;
+
+-- Cuanto han gastado los clientes en cada proveedor, sin importar la fecha?
+SELECT
+	customer_id,
+    SUM(quantity * cost_to_customer_per_qty) AS total_spent
+FROM customer_purchases
+GROUP BY customer_id
+ORDER BY customer_id;
