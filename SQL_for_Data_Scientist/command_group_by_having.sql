@@ -194,3 +194,12 @@ SELECT
 FROM vendor_inventory
 GROUP BY market_date
 ORDER BY market_date;
+
+-- Cuantos productos diferentes cada proveedor llevo al mercado durante un rango de fecha?
+SELECT
+	vendor_id,
+    COUNT(DISTINCT product_id) AS different_products_offered
+FROM vendor_inventory
+WHERE market_date BETWEEN '2019-04-03' AND '2019-04-16'
+GROUP BY vendor_id
+ORDER BY vendor_id;
