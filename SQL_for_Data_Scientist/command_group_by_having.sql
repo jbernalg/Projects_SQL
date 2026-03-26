@@ -247,7 +247,7 @@ FROM customer_purchases cp
 INNER JOIN product p 
 	ON cp.product_id = p.product_id;
     
--- sumar por grupo las cantidades de productos segun su medida de peso
+-- crear columnas para cada medida de pesos de los productos
 SELECT
 	cp.market_date,
     cp.vendor_id,
