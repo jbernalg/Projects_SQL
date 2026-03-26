@@ -267,4 +267,21 @@ FROM customer_purchases cp
 INNER JOIN product p 
 	ON cp.product_id = p.product_id;
     
-
+-- sumar cada medida de peso por fecha de mercado por cliente
+SELECT
+	cp.market_date,
+    cp.customer_id,
+    SUM(CASE 
+			WHEN product_qty_type = 'unit' THEN quantity ELSE 0
+		END) AS quantity_units_purchased,
+    SUM(CASE
+			WHEN product_qty_type = 'lbs' THEN quantity ELSE 0
+		END) AS quantity_lbs_purchased,
+    SUM(CASE
+			WHEN product_qty_type NOT IN ('unit', 'lbs') THEN quantity ELSE 0
+		END) AS quantity_other_purchased
+FROM customer_purchases cp
+INNER JOIN product p 
+	ON cp.product_id = p.product_id
+GROUP BY market_date, customer_id
+ORDER BY market_date, customer_id;
