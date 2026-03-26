@@ -184,3 +184,13 @@ INNER JOIN product AS p
 INNER JOIN product_category AS pc
 	ON p.product_category_id = pc.product_category_id
 GROUP BY pc.product_category_name, p.product_category_id;
+
+
+-- ------------------- COUNT and COUNT DISTINCT ------------------------------
+-- Cuantos productos se ofrecen a la venta en cada fecha de marcado
+SELECT
+	market_date,
+    COUNT(product_id) AS product_count
+FROM vendor_inventory
+GROUP BY market_date
+ORDER BY market_date;
