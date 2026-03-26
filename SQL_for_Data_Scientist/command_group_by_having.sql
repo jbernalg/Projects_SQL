@@ -231,3 +231,40 @@ WHERE market_date BETWEEN '2019-04-03' AND '2019-04-16'
 GROUP BY vendor_id
 HAVING inventory_item_count >= 141
 ORDER BY vendor_id;
+
+-- --------- Sentencia CASE dentro de funciones de agregacion --------------
+-- unir las tablas customer_purchases con product para traer la columna product_qty_type
+SELECT
+	cp.market_date,
+    cp.vendor_id,
+    cp.customer_id,
+    cp.product_id,
+    cp.quantity,
+    p.product_name,
+    p.product_size,
+    p.product_qty_type
+FROM customer_purchases cp
+INNER JOIN product p 
+	ON cp.product_id = p.product_id;
+    
+-- sumar por grupo las cantidades de productos segun su medida de peso
+SELECT
+	cp.market_date,
+    cp.vendor_id,
+    cp.customer_id,
+    cp.product_id,
+    CASE 
+		WHEN product_qty_type = 'unit' THEN quantity ELSE 0
+	END AS quantity_units,
+    CASE
+		WHEN product_qty_type = 'lbs' THEN quantity ELSE 0
+    END AS quantity_lbs,
+    CASE
+		WHEN product_qty_type NOT IN ('unit', 'lbs') THEN quantity ELSE 0
+    END AS quantity_other,
+    p.product_qty_type
+FROM customer_purchases cp
+INNER JOIN product p 
+	ON cp.product_id = p.product_id;
+    
+
