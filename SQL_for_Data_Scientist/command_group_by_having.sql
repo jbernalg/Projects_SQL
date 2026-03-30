@@ -16,7 +16,7 @@ GROUP BY market_date, customer_id
 ORDER BY market_date, customer_id;
 
 -- ---------------------- Funciones agregadoras -------------------------------
--- obtener la cantidad de veces que los clientes comprar por cada fecha
+-- obtener la cantidad de veces que los clientes compran en cada fecha
 SELECT
 	market_date,
     customer_id,
@@ -36,7 +36,7 @@ GROUP BY market_date, customer_id
 ORDER BY market_date, customer_id
 LIMIT 10;
 
--- Cuantos tipos diferentes de articulos fueron comprados por cada cliente
+-- Cuantos tipos diferentes de articulos fueron comprados por cada cliente?
 SELECT
 	market_date,
     customer_id,
@@ -63,7 +63,7 @@ SELECT
 	market_date,
     customer_id,
     vendor_id,
-    quantity * cost_to_customer_per_qty AS price
+    ROUND(quantity * cost_to_customer_per_qty, 2) AS price
 FROM customer_purchases
 WHERE customer_id = 3
 ORDER BY market_date, vendor_id;
@@ -72,7 +72,7 @@ ORDER BY market_date, vendor_id;
 SELECT
     customer_id,
     market_date,
-    SUM(quantity * cost_to_customer_per_qty) AS total_spent
+    ROUND(SUM(quantity * cost_to_customer_per_qty),2) AS total_spent
 FROM customer_purchases
 WHERE customer_id = 3
 GROUP BY market_date
@@ -82,17 +82,17 @@ ORDER BY market_date;
 SELECT
 	customer_id,
     vendor_id,
-    SUM(quantity * cost_to_customer_per_qty) AS total_spent
+    ROUND(SUM(quantity * cost_to_customer_per_qty),2) AS total_spent
 FROM customer_purchases
 WHERE
 	customer_id = 3
-GROUP BY customer_id, vendor_id
-ORDER BY customer_id, vendor_id;
+GROUP BY vendor_id  
+ORDER BY  vendor_id;
 
--- Cuanto han gastado los clientes en cada proveedor, sin importar la fecha?
+-- Cuanto ha gastado cada cliente en el mercado hasta ahora?
 SELECT
 	customer_id,
-    SUM(quantity * cost_to_customer_per_qty) AS total_spent
+    ROUND(SUM(quantity * cost_to_customer_per_qty),2) AS total_spent
 FROM customer_purchases
 GROUP BY customer_id
 ORDER BY customer_id;
@@ -104,7 +104,7 @@ SELECT
     cp.customer_id,
     v.vendor_name,
     cp.vendor_id,
-    cp.quantity * cp.cost_to_customer_per_qty AS price
+    ROUND(cp.quantity * cp.cost_to_customer_per_qty,2) AS price
 FROM customer c
 LEFT JOIN customer_purchases cp
 	ON c.customer_id = cp.customer_id
@@ -130,7 +130,6 @@ WHERE cp.customer_id = 3
 GROUP BY
 	c.customer_first_name,
     c.customer_last_name,
-    cp.customer_id,
     v.vendor_name,
     cp.vendor_id
 ORDER BY cp.customer_id, cp.vendor_id;
@@ -171,8 +170,7 @@ SELECT
 FROM  vendor_inventory
 ORDER BY original_price;
 
--- obtener los precios mas bajos y mas altos dentro de cada cateogria de 
--- producto
+-- obtener los precios mas bajos y mas altos dentro de cada categoria de producto
 SELECT
 	pc.product_category_name,
     p.product_category_id,
@@ -187,7 +185,7 @@ GROUP BY pc.product_category_name, p.product_category_id;
 
 
 -- ------------------- COUNT and COUNT DISTINCT ------------------------------
--- Cuantos productos se ofrecen a la venta en cada fecha de marcado
+-- Cuantos productos se ofrecen a la venta en cada fecha de mercado?
 SELECT
 	market_date,
     COUNT(product_id) AS product_count
@@ -247,7 +245,7 @@ FROM customer_purchases cp
 INNER JOIN product p 
 	ON cp.product_id = p.product_id;
     
--- crear columnas para cada medida de pesos de los productos
+-- crear columnas para cada medida de peso de los productos
 SELECT
 	cp.market_date,
     cp.vendor_id,
