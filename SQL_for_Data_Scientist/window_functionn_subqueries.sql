@@ -51,3 +51,14 @@ SELECT
 FROM vendor_inventory
 ORDER BY vendor_id, original_price DESC;
 
+-- ------------------------- DENSE_RANK -----------------------------------
+-- util cuando hay empates en la clasificacion y no desea saltarse la secuencia
+SELECT
+	vendor_id,
+    market_date,
+    product_id,
+    original_price,
+    DENSE_RANK() OVER (PARTITION BY vendor_id ORDER BY original_price DESC) AS price_rank
+FROM vendor_inventory
+ORDER BY vendor_id, original_price DESC;
+
