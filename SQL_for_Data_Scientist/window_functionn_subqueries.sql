@@ -38,3 +38,16 @@ SELECT * FROM
     ORDER BY vendor_id
 ) AS x
 WHERE x.price_rank = 1;
+
+-- ------------------------- RANK -------------------------------------
+-- numera los resultados de la misma manera que row_number, pero asigna con el mismo valor
+-- el mismo ranking
+SELECT
+	vendor_id,
+    market_date,
+    product_id,
+    original_price,
+    RANK() OVER (PARTITION BY vendor_id ORDER BY original_price DESC) AS price_rank
+FROM vendor_inventory
+ORDER BY vendor_id, original_price DESC;
+
