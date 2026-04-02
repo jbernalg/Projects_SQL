@@ -62,3 +62,15 @@ SELECT
 FROM vendor_inventory
 ORDER BY vendor_id, original_price DESC;
 
+-- ------------------------------ NTILE ------------------------------------
+-- divide los registros en n bloques
+-- obtener el productos que ocupa el decimo superior del inventario, cuando se ordena por precio
+SELECT
+	vendor_id,
+    market_date,
+    product_id,
+    original_price,
+    NTILE(10) OVER (ORDER BY original_price DESC) AS price_ntile
+FROM vendor_inventory  
+ORDER BY original_price DESC;
+
