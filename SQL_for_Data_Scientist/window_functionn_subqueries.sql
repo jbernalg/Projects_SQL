@@ -74,3 +74,14 @@ SELECT
 FROM vendor_inventory  
 ORDER BY original_price DESC;
 
+-- --------------------- Funciones de ventana agregada ---------------------------------
+-- y si ud es un agricultor que vende productos en el mercado y uiere saber cuales de sus
+-- productos tenian un precio por encima del promedio por producto en cada fecha de mercado?
+SELECT
+	vendor_id,
+    market_date,
+    product_id,
+    original_price,
+    AVG(original_price) OVER (PARTITION BY market_date ORDER BY market_date) AS avg_cost_product_by_market
+FROM vendor_inventory;
+
