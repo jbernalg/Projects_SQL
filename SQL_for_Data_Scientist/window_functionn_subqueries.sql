@@ -133,3 +133,15 @@ SELECT
     SUM(quantity * cost_to_customer_per_qty) OVER (PARTITION BY customer_id ORDER BY market_date, transaction_time, product_id)
     AS customer_spend_running_total
 FROM customer_purchases;
+
+-- Que esperas que ocurra cuando solo hay partition by sin order by?
+SELECT
+	customer_id,
+    market_date,
+    vendor_id,
+    product_id,
+    ROUND(quantity * cost_to_customer_per_qty, 2) AS price,
+    ROUND(SUM(quantity * cost_to_customer_per_qty) OVER (PARTITION BY customer_id), 2)
+    AS customer_spend_total
+FROM customer_purchases;
+-- sin el ordenamiento, calcula el total gastado or el cliente y lo muestra para cada fila
