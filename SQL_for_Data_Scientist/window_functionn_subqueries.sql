@@ -112,5 +112,13 @@ SELECT
 FROM vendor_inventory
 ORDER BY vendor_id, market_date, original_price DESC;
 
-
+-- obtener el total acumulado del precio 
+SELECT
+	customer_id,
+    vendor_id,
+    product_id,
+    quantity * cost_to_customer_per_qty AS price,
+    SUM(quantity * cost_to_customer_per_qty) OVER (ORDER BY market_date, transaction_time, customer_id, product_id)
+    AS running_total_purchases
+FROM customer_purchases;
 
