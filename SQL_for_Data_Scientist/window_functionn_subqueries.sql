@@ -102,5 +102,15 @@ ORDER BY x.market_date, x.original_price DESC;
 -- El vendedor 8 tenia 2 productos, 7 y 8, que estaban por encima del costo promedio
 -- de los productos en cada una de las fechas del mercado listadas
 
+-- Cuantos productos diferentes trajo al mercado cada proveedor en cada fecha?
+SELECT
+	vendor_id,
+    market_date,
+    product_id,
+    original_price,
+    COUNT(product_id) OVER (PARTITION BY market_date, vendor_id) AS vendor_product_count_per_market_date
+FROM vendor_inventory
+ORDER BY vendor_id, market_date, original_price DESC;
+
 
 
