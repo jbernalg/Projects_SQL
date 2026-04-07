@@ -176,5 +176,21 @@ SELECT * FROM
 ) AS x
 WHERE x.market_date = '2019-04-10'
 	AND (x.booth_number <> x.previous_booth_number OR x.previous_booth_number IS NULL);
-
+    
+-- Determinar si las ventas totales en cada fecha de mercado son mayores o menores que las de las 
+-- fecha de mercado anterior
+SELECT
+	market_date,
+    SUM(quantity * cost_to_customer_per_qty) AS market_date_total_sales
+FROM customer_purchases
+GROUP BY market_date
+ORDER by market_date;
+-- agregamos la funcion de ventana LAG para mostrar la suma calculada de la fecha de mercado anterior a cada fila
+SELECT
+	market_date,
+    SUM(quantity * cost_to_customer_per_qty) AS market_date_total_sales,
+    LAG(SUM(quantity * cost_to_customer_per_qty), 1) OVER (ORDER BY market_date) AS previous_market_date_total_sales
+FROM customer_purchases
+GROUP BY market_date
+ORDER by market_date;
 
