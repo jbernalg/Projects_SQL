@@ -194,3 +194,7 @@ FROM customer_purchases
 GROUP BY market_date
 ORDER by market_date;
 
+-- ----------------------------- LEAD -------------------------------------------
+-- funciona de la misma forma que LAG pero obtiene el valor de la siguiente fila
+-- Estableces el entero de desplazamiento a cualuier valor x para contar x filas hacia adelante
+-- siguiendo el orden de clasificacion especificado en order by de la funcion ventana
