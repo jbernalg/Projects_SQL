@@ -144,4 +144,21 @@ SELECT
     ROUND(SUM(quantity * cost_to_customer_per_qty) OVER (PARTITION BY customer_id), 2)
     AS customer_spend_total
 FROM customer_purchases;
--- sin el ordenamiento, calcula el total gastado or el cliente y lo muestra para cada fila
+-- sin el ordenamiento, calcula el total gastado por el cliente y lo muestra para cada fila
+
+
+-- --------------------------------- LAG y LEAD -------------------------------------------
+-- Recupera datos de una fila que esta un numero seleccionado de filas hacia atras en el conjunto de 
+-- datos. Establece el numero de filas en cualquier valor entero x para contar x filas hacia atras
+-- siguiendo el orden especificado en la seccion ORDER BY de la funcion ventana
+
+-- mostrar la asignacion de puesto de cada vendedor para cada fecha junto con sus asignaciones
+-- de puestos anteriores
+SELECT
+	market_date,
+    vendor_id,
+    booth_number,
+    LAG(booth_number, 1) OVER (PARTITION BY vendor_id ORDER BY market_date, vendor_id) AS previous_booth_number
+FROM vendor_booth_assignments
+ORDER BY market_date, vendor_id, booth_number;
+
