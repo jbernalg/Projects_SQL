@@ -57,5 +57,7 @@ WHERE market_start_datetime = '2019-03-02 08:00:00';
 -- Resta intevarlos de fechas y horas
 SELECT
 	market_start_datetime,
-    DATE_ADD(mark)
+    DATE_ADD(market_start_datetime, INTERVAL -30 DAY) AS msd_date_plus_neg30days,
+    DATE_SUB(market_start_datetime, INTERVAL 30 DAY) AS msd_date_minus_30days
 FROM datetime_demo
+WHERE market_start_datetime = '2019-03-02 08:00:00';
