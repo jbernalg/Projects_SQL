@@ -38,3 +38,24 @@ SELECT
 FROM datetime_demo
 WHERE market_start_datetime = '2019-03-02 08:00:00';
 
+-- -------------------------- DATE_ADD ------------------------------
+-- Cuantas ventas ocurrieron dentro de los primeros 30 minutos despues de que abrio
+-- el mercado?
+SELECT
+	market_start_datetime,
+    DATE_ADD(market_start_datetime, INTERVAL 30 MINUTE) AS msd_date_plus_30min
+FROM datetime_demo
+WHERE market_start_datetime = '2019-03-02 08:00:00';
+
+SELECT
+	market_start_datetime,
+    DATE_ADD(market_start_datetime, INTERVAL 30 DAY) AS msd_date_plus_30days
+FROM datetime_demo
+WHERE market_start_datetime = '2019-03-02 08:00:00';
+
+-- ------------------------- DATE_SUB ------------------------------
+-- Resta intevarlos de fechas y horas
+SELECT
+	market_start_datetime,
+    DATE_ADD(mark)
+FROM datetime_demo
