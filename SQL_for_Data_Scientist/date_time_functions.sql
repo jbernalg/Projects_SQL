@@ -17,7 +17,7 @@ CREATE TABLE farmers_market.datetime_demo AS (
 
 SELECT * FROM datetime_demo;
 
--- ------------------------------- EXTRACT y DATE_PART --------------------------
+-- ------------------------------- EXTRACT --------------------------
 -- obtener todas las partes de un datetime de una fecha especifica
 SELECT
 	market_start_datetime,
@@ -28,3 +28,13 @@ SELECT
     EXTRACT(MINUTE FROM market_start_datetime) AS msd_minute
 FROM datetime_demo
 WHERE market_start_datetime = '2019-03-02 08:00:00';
+
+-- ---------------------------- DATE y TIME -------------------------------
+-- obtener la fecha y la hora completa de un datetime especifico
+SELECT
+	market_start_datetime,
+    DATE(market_start_datetime) AS msd_date,
+    TIME(market_start_datetime) AS msd_time
+FROM datetime_demo
+WHERE market_start_datetime = '2019-03-02 08:00:00';
+
