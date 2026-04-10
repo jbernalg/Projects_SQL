@@ -86,4 +86,12 @@ SELECT
     TIMESTAMPDIFF(MINUTE, market_start_datetime, market_end_datetime) AS market_duration_mins
 FROM datetime_demo;
 
+-- ----------- Funciones de fecha en resumenes agregados y funciones de ventana ------------
+-- obtener los registros de detalle de compra de cada cliente, en este caso, para el cliente 1
+SELECT
+	customer_id,
+    market_date
+FROM customer_purchases
+WHERE customer_id = 1;
+
 
