@@ -102,3 +102,13 @@ SELECT
 FROM customer_purchases
 WHERE customer_id = 1
 GROUP BY customer_id;
+
+-- determinar por cuanto tiempo han las personas han sido clientes del mercado
+SELECT
+	customer_id,
+	MIN(market_date) AS first_purchases,
+    MAX(market_date) AS last_purchases,
+    COUNT(DISTINCT market_date) AS count_of_purchases_dates,
+    DATEDIFF(MAX(market_date), MIN(market_date)) AS days_between_first_last_purchases
+FROM customer_purchases
+GROUP BY customer_id;
