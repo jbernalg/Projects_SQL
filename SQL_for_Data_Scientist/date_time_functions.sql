@@ -86,7 +86,7 @@ SELECT
     TIMESTAMPDIFF(MINUTE, market_start_datetime, market_end_datetime) AS market_duration_mins
 FROM datetime_demo;
 
--- ----------- Funciones de fecha en resumenes agregados y funciones de ventana ------------
+-- ----------- Funciones de fecha en resumenes agregados  ------------
 -- obtener los registros de detalle de compra de cada cliente, en este caso, para el cliente 1
 SELECT
 	customer_id,
@@ -112,3 +112,28 @@ SELECT
     DATEDIFF(MAX(market_date), MIN(market_date)) AS days_between_first_last_purchases
 FROM customer_purchases
 GROUP BY customer_id;
+
+-- ------------------------- CURDATE -----------------------------------
+-- representa la fecha actual del sistema en cualquier calculo que requiera un parametro
+-- de fecha o fecha y hora
+
+-- Cuanto tiempo (en dias) ha pasado desde que el cliente realizo su ultima compra
+SELECT
+	customer_id,
+	MIN(market_date) AS first_purchases,
+    MAX(market_date) AS last_purchases,
+    COUNT(DISTINCT market_date) AS count_of_purchases_dates,
+    DATEDIFF(MAX(market_date), MIN(market_date)) AS days_between_first_last_purchases,
+    DATEDIFF(CURDATE(), MAX(market_date)) AS days_since_last_purchases
+FROM customer_purchases
+GROUP BY customer_id;
+
+-- ------------------------- funciones de ventana ------------------------------
+-- Obtener los dias entre cada compra que realiza el cliente 1
+SELECT
+	customer_id,
+    market_date,
+    RANK() OVER (PARTITION BY customer_id ORDER BY market_date) AS purchases_number,
+    LEAD(market_date, 1) OVER (PARTITION BY customer_id ORDER BY market_date) AS next_purchases
+FROM customer_purchases
+WHERE customer_id = 1;
