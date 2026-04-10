@@ -75,4 +75,15 @@ FROM (
     FROM farmers_market.datetime_demo
 ) x;
 
+-- -------------------------- TIMESTAMPDIFF ----------------------------------
+-- devuelve la diferencia entre dos fechas y horas en cualquier intervalo elegido
+
+-- Calcular las horas y los minutos entre los horarios de inicio y fin del mercado en cada fecha
+SELECT
+	market_start_datetime,
+    market_end_datetime,
+    TIMESTAMPDIFF(HOUR, market_start_datetime, market_end_datetime) AS market_duration_hours,
+    TIMESTAMPDIFF(MINUTE, market_start_datetime, market_end_datetime) AS market_duration_mins
+FROM datetime_demo;
+
 
