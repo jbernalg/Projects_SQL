@@ -61,3 +61,18 @@ SELECT
     DATE_SUB(market_start_datetime, INTERVAL 30 DAY) AS msd_date_minus_30days
 FROM datetime_demo
 WHERE market_start_datetime = '2019-03-02 08:00:00';
+
+-- ------------------------- DATEDIFF ---------------------------------------
+-- acepta dos fechas y devuelve la diferencia entre ellas
+SELECT
+	x.first_market,
+    x.last_market,
+    DATEDIFF(x.last_market, x.first_market) days_first_to_last
+FROM (
+	SELECT
+		MIN(market_start_datetime) first_market,
+        MAX(market_start_datetime) last_market
+    FROM farmers_market.datetime_demo
+) x;
+
+
