@@ -213,7 +213,26 @@ FROM (
 
 ) AS a;
 
+-- list of everyone who only made a purchase at one market event during the previous month that is march 2019
+SELECT
+	DISTINCT customer_id,
+    market_date
+FROM customer_purchases
+WHERE DATEDIFF('2019-03-31', market_date) <= 31;
 
+-- filter to those with exactly one market date
+SELECT
+	x.customer_id,
+    COUNT(DISTINCT x.market_date) AS market_count
+FROM (
+	SELECT
+		DISTINCT customer_id,
+		market_date
+	FROM customer_purchases
+	WHERE DATEDIFF('2019-03-31', market_date) <= 31
+) AS x
+GROUP BY x.customer_id
+HAVING COUNT(DISTINCT market_date) = 1;
 
 
 
