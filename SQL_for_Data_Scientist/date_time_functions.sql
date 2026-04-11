@@ -128,16 +128,6 @@ SELECT
 FROM customer_purchases
 GROUP BY customer_id;
 
--- ------------------------- Window functions ------------------------------
--- Obtener los dias entre cada compra que realiza el cliente 1
-SELECT
-	customer_id,
-    market_date,
-    RANK() OVER (PARTITION BY customer_id ORDER BY market_date) AS purchases_number,
-    LEAD(market_date, 1) OVER (PARTITION BY customer_id ORDER BY market_date) AS next_purchases
-FROM customer_purchases
-WHERE customer_id = 1;
-
 -- On how many different dates did cliente 1 make purchases?
 SELECT
 	customer_id,
@@ -168,6 +158,29 @@ SELECT
     DATEDIFF(CURDATE(), MAX(market_date)) AS days_since_last_purchase
 FROM customer_purchases
 GROUP BY customer_id;
+
+-- ------------------------- Window functions ------------------------------
+-- Obtener los dias entre cada compra que realiza el cliente 1
+SELECT
+	customer_id,
+    market_date,
+    RANK() OVER (PARTITION BY customer_id ORDER BY market_date) AS purchases_number,
+    LEAD(market_date, 1) OVER (PARTITION BY customer_id ORDER BY market_date) AS next_purchases
+FROM customer_purchases
+WHERE customer_id = 1;
+
+-- fix the issue of the RANK counting each purchase, when we really want to count each purchases date
+SELECT
+	x.customer_id,
+    x.market_date,
+    RANK () OVER (PARTITION BY x.customer_id ORDER BY x.market_date) AS purchases_number,
+    LEAD(x.market_date,1) OVER (PARTITION BY x.customer_id ORDER BY x.market_date) AS next_purchase
+FROM (
+	SELECT DISTINCT customer_id, market_date
+    FROM customer_purchases
+	WHERE customer_id = 1
+) AS x;
+
 
 
 
