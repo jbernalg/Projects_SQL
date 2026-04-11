@@ -181,6 +181,18 @@ FROM (
 	WHERE customer_id = 1
 ) AS x;
 
+-- add a line to use  that next_purchases date in a DATEDIFF calculation
+SELECT
+	x.customer_id,
+    x.market_date,
+    RANK () OVER (PARTITION BY x.customer_id ORDER BY x.market_date) AS purchases_number,
+    LEAD(x.market_date,1) OVER (PARTITION BY x.customer_id ORDER BY x.market_date) AS next_purchase,
+    DATEDIFF(LEAD (x.market_date,1) OVER (PARTITION BY x.customer_id ORDER BY x.market_date), x.market_date) AS days_between_purchases
+FROM (
+	SELECT DISTINCT customer_id, market_date
+    FROM customer_purchases
+	WHERE customer_id = 1
+) AS x;
 
 
 
