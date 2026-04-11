@@ -194,6 +194,25 @@ FROM (
 	WHERE customer_id = 1
 ) AS x;
 
+-- How many days pass between each customer's first and second purchases?
+SELECT
+	a.customer_id,
+    a.market_date AS first_purchase,
+    a.next_purchase AS second_purchase,
+    DATEDIFF(a.next_purchase, a.market_date) AS time_between_1st_2nd_purchase
+FROM (
+	SELECT
+		x.customer_id,
+		x.market_date,
+		RANK () OVER (PARTITION BY x.customer_id ORDER BY x.market_date) AS purchases_number,
+		LEAD(x.market_date,1) OVER (PARTITION BY x.customer_id ORDER BY x.market_date) AS next_purchase
+	FROM (
+		SELECT DISTINCT customer_id, market_date
+		FROM customer_purchases
+	) AS x
+
+) AS a;
+
 
 
 
