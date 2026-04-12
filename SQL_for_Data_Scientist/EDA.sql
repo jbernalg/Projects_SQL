@@ -11,3 +11,9 @@ SELECT
 FROM product
 GROUP BY product_id
 HAVING COUNT(*) > 1;
+
+-- show everything of the product_category table
+SELECT * FROM product_category;
+
+-- How many different products are there in the catalog?
+SELECT COUNT(*) FROM product;
