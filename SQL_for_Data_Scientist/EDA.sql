@@ -27,3 +27,7 @@ FROM product_category AS pc
 LEFT JOIN product AS p
 	ON pc.product_category_id = p.product_category_id
 GROUP BY pc.product_category_id;
+
+-- What is in the product_qty_type field and how many different quantity types are there?
+SELECT DISTINCT product_qty_type FROM product;
+
