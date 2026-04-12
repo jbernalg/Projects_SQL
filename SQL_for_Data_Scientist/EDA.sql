@@ -31,3 +31,16 @@ GROUP BY pc.product_category_id;
 -- What is in the product_qty_type field and how many different quantity types are there?
 SELECT DISTINCT product_qty_type FROM product;
 
+-- show values of the vendor_inventory table
+SELECT * FROM vendor_inventory
+LIMIT 10;
+
+-- verify that market_date, vendor_id and product_id are primary keys
+SELECT 
+	market_date,
+    vendor_id,
+    product_id,
+    COUNT(*)
+FROM vendor_inventory
+GROUP BY market_date, vendor_id, product_id
+HAVING COUNT(*) > 1;
