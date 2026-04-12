@@ -17,3 +17,13 @@ SELECT * FROM product_category;
 
 -- How many different products are there in the catalog?
 SELECT COUNT(*) FROM product;
+
+-- How many products are there per product category?
+SELECT
+	pc.product_category_id,
+    pc.product_category_name,
+    COUNT(product_id) AS count_of_products
+FROM product_category AS pc
+LEFT JOIN product AS p
+	ON pc.product_category_id = p.product_category_id
+GROUP BY pc.product_category_id;
