@@ -51,4 +51,12 @@ SELECT
     max(market_date)
 FROM vendor_inventory;
 
-
+-- How many different vendors are there, and when did they each start selling at the market?
+-- Which are still selling at the most recent market date?
+SELECT
+	vendor_id,
+    min(market_date),
+    max(market_date)
+FROM vendor_inventory
+GROUP BY vendor_id
+ORDER BY min(market_date), max(market_date);
