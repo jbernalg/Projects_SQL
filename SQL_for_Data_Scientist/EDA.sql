@@ -60,3 +60,28 @@ SELECT
 FROM vendor_inventory
 GROUP BY vendor_id
 ORDER BY min(market_date), max(market_date);
+
+-- ------------------------------- Exploring changes over time --------------------------
+-- Do most vendors sell at the market year-round, or is there a certain time of year when there are different numbers of 
+-- vendors at the farmer's market?
+SELECT
+	EXTRACT(YEAR FROM market_date) AS market_year,
+    EXTRACT(MONTH FROM market_date) AS market_month,
+    COUNT(DISTINCT vendor_id) AS vendors_with_inventory
+FROM vendor_inventory
+GROUP BY EXTRACT(YEAR FROM market_date), EXTRACT(MONTH FROM market_date)
+ORDER BY EXTRACT(YEAR FROM market_date), EXTRACT(MONTH FROM market_date); 
+
+-- Show what a particular  vendor's inventory looks like id = 7
+SELECT
+	*
+FROM vendor_inventory
+WHERE vendor_id = 7
+ORDER BY market_date, product_id;
+
+
+
+
+
+
+
