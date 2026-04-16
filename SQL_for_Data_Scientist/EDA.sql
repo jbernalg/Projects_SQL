@@ -94,7 +94,17 @@ SELECT * FROM customer_purchases
 WHERE vendor_id = 7 AND product_id = 4 AND customer_id = 12
 ORDER BY customer_id, market_date, transaction_time;
 
-
+-- get the total sales for each group
+SELECT
+	market_date,
+    vendor_id,
+    product_id,
+    SUM(quantity) AS quantity_sold,
+    SUM(quantity * cost_to_customer_per_qty) AS total_sales
+FROM customer_purchases
+WHERE vendor_id = 7 AND product_id = 4
+GROUP BY market_date, vendor_id, product_id
+ORDER BY market_date, vendor_id, product_id;
 
 
 
