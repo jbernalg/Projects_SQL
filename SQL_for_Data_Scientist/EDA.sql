@@ -79,6 +79,20 @@ FROM vendor_inventory
 WHERE vendor_id = 7
 ORDER BY market_date, product_id;
 
+-- ------------------ Exploring multiple tables simultaneously ---------------------------
+-- Show available data in the customer_purchases table
+SELECT * FROM customer_purchases LIMIT 10;
+
+-- closer at purchases of vendor 7's product #4
+SELECT * FROM customer_purchases
+WHERE vendor_id = 7 AND product_id = 4
+ORDER BY market_date, transaction_time;
+
+-- run the same  query but filtered to, or sorted by, the customer_id to explore one customer's purchases
+-- history of a product in more detail
+SELECT * FROM customer_purchases
+WHERE vendor_id = 7 AND product_id = 4 AND customer_id = 12
+ORDER BY customer_id, market_date, transaction_time;
 
 
 
