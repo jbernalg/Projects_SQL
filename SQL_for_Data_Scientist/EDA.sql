@@ -44,3 +44,11 @@ SELECT
 FROM vendor_inventory
 GROUP BY market_date, vendor_id, product_id
 HAVING COUNT(*) > 1;
+
+-- When was the first market that was tracked in this database, and how recent is the latest data?
+SELECT 
+	min(market_date),
+    max(market_date)
+FROM vendor_inventory;
+
+
